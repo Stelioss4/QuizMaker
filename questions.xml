@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<QnAContent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Questions>
+    <string>who won the world cup 2022?</string>
+  </Questions>
+  <Answers>
+    <string>Argentina
+Italy
+Germany
+France
+</string>
+  </Answers>
+  <CorrectAnswers>
+    <string>Argentina</string>
+  </CorrectAnswers>
+</QnAContent>

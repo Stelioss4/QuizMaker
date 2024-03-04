@@ -7,24 +7,23 @@ public class Program
     public static void Main(string[] args)
     {
         const string DONE = "done";
-        const int MAX_ANSWERS = 4; 
+        const int MAX_ANSWERS = 4;
 
         UIMethods.DisplayWelcomeMessag();
         UIMethods.AskToPlayOrAddQuestions();
 
-        QnAContent content = new QnAContent();
+        Questions content = new Questions();
+        Answers ansanswerContent = new Answers();
 
         string path = @"C:\Users\PC\source\repos\QuizMaker\questions.xml";
-        string question = "";
         string answers = "";
         string CorrectAnswer = "";
-        string randomQuestion = "";
 
         if (UIMethods.AskToPlayOrAddQuestions())
         {
             while (true)
             {
-                question = UIMethods.AddTheQuestions();
+                string question = UIMethods.AddTheQuestions();
                 if (question.ToLower() == DONE)
                 {
                     break;
@@ -32,11 +31,12 @@ public class Program
                 answers = UIMethods.AddTheAnswers();
                 CorrectAnswer = UIMethods.GiveTheCorrectAnswer();
 
-                content.Questions.Add(question);
-                content.Answers.Add(answers);
-                content.CorrectAnswers.Add(CorrectAnswer);
+                content.questions.Add(question);
+                ansanswerContent.answers.Add(answers);
+                ansanswerContent.CorrectAnswers.Add(CorrectAnswer);
 
-                Logic.SaveToHardDrive(path, content);
+                Logic.SaveQuestionsToHardDrive(path, content);
+                Logic.SaveAnswersToHardDrive(path, ansanswerContent);
 
             }
         }
@@ -44,15 +44,13 @@ public class Program
         UIMethods.PlayWithExistedQuestions();
         while (true)
         {
-            
-            content = Logic.LoadFromHardDrive(path);
-            randomQuestion = Logic.MakeRandomQuestion(content);
 
+            Logic.LoadQuestionsFromHardDrive(path , content);
+            Logic.LoadAnswersFromHardDrive(path , ansanswerContent);
+            string randomQuestion = Logic.MakeRandomQuestion(content);
             Console.WriteLine(randomQuestion);
-            for (int i = 0; i < MAX_ANSWERS; i++)
-            {
-                Console.WriteLine(answers);
-            }
+            Console.WriteLine(answers);
+
             if (Console.ReadLine() == "buy")
             {
                 Console.WriteLine($"the correct answer is: {CorrectAnswer}");

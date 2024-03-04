@@ -7,14 +7,11 @@
         {
             Console.WriteLine("HELLO! WELCOME ON QUIZ MAKER");
         }
-
         public static string AddTheQuestions()
         {
             Console.WriteLine("Please write a question (type 'done' to finish):");
             return Console.ReadLine();
         }
-    
-
     public static string AddTheAnswers()
         {
             Console.WriteLine("Please write four additional answers for the question!");
@@ -54,7 +51,7 @@
         }
         public static void PlayWithExistedQuestions()
         {
-            Console.WriteLine("OK Lets play then!");
+            Console.WriteLine("OK then, Lets play !");
         }
 
     }

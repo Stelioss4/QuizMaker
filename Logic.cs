@@ -1,40 +1,59 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Reflection.Metadata;
 using System.Xml.Serialization;
 namespace QuizMaker
 {
     public static class Logic
     {
-        public static void SaveToHardDrive(string path, QnAContent content)
+        public static void SaveQuestionsToHardDrive(string path, Questions content)
         {
             path = @"C:\Users\PC\source\repos\QuizMaker\questions.xml";
-            XmlSerializer serializer = new XmlSerializer(typeof(QnAContent));
+            XmlSerializer serializer = new XmlSerializer(typeof(Questions));
             using (FileStream file = File.Create(path))
             {
                 serializer.Serialize(file, content);
             }
         }
-        public static QnAContent LoadFromHardDrive(string path)
+        public static void SaveAnswersToHardDrive(string path, Answers answerContent)
         {
-            path = @"C:\Users\PC\source\repos\QuizMaker\bin\Debug\net8.0\questions.xml";
-            QnAContent content;
-            XmlSerializer serializer = new XmlSerializer(typeof(QnAContent));
-            using (FileStream file = File.OpenRead(path))
+            XmlSerializer serializer = new XmlSerializer(typeof(Answers));
+            using (FileStream file = File.Create(path))
             {
-                content = serializer.Deserialize(file) as QnAContent;
+                serializer.Serialize(file, answerContent);
             }
-            return content;
         }
 
-        public static string MakeRandomQuestion(QnAContent content)
+        public static void LoadQuestionsFromHardDrive(string path , Questions content)
         {
-            if (content.Questions.Count == 0)
+            path = @"C:\Users\PC\source\repos\QuizMaker\questions.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(Questions));
+            using (FileStream file = File.OpenRead(path))
+            {
+                content = serializer.Deserialize(file) as Questions;
+            }
+           
+        }
+        public static void LoadAnswersFromHardDrive(string path, Answers answerContent)
+        {
+            path = @"C:\Users\PC\source\repos\QuizMaker\questions.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(Answers));
+            using (FileStream file = File.OpenRead(path))
+            {
+                answerContent = serializer.Deserialize(file) as Answers;
+            }
+           
+        }
+
+        public static string MakeRandomQuestion(Questions content)
+        {
+            if (content.questions.Count == 0)
             {
                 Console.WriteLine("No questions available.");
                 return null;
             }
             Random rand = new Random();
-            int randomIndex = rand.Next(0, content.Questions.Count); string randomQuestion = content.Questions[randomIndex];
+            int randomIndex = rand.Next(0, content.questions.Count); string randomQuestion = content.questions[randomIndex];
 
             return randomQuestion;
         }

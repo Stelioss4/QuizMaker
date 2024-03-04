@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<QnAContent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Questions>
-    <string>who won the world cup 2022?</string>
-  </Questions>
-  <Answers>
-    <string>Argentina
-Italy
-Germany
-France
+<Answers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <answers>
+    <string>11
+15
+9
+10
 </string>
-  </Answers>
+    <string>10m
+18m
+6m
+25m
+</string>
+    <string>red
+green
+blue
+white
+</string>
+    <string>
+
+
+
+</string>
+  </answers>
   <CorrectAnswers>
-    <string>Argentina</string>
+    <string>11</string>
+    <string>10m</string>
+    <string>who won the world cup 2022?</string>
+    <string>done</string>
   </CorrectAnswers>
-</QnAContent>
+</Answers>

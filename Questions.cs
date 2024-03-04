@@ -9,7 +9,6 @@ namespace QuizMaker
         public Questions()
         {
             questions = new List<string>();
-            
         }
 
         public override string ToString()

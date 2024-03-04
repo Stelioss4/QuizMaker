@@ -1,4 +1,5 @@
 ﻿using QuizMaker;
+using System.IO;
 using System.Net.Mime;
 
 public class Program
@@ -15,7 +16,7 @@ public class Program
         Questions content = new Questions();
         Answers ansanswerContent = new Answers();
 
-        string path = @"C:\Users\PC\source\repos\QuizMaker\questions.xml";
+        string path = "";
         string answers = "";
         string CorrectAnswer = "";
 
@@ -51,7 +52,7 @@ public class Program
             Console.WriteLine(randomQuestion);
             Console.WriteLine(answers);
 
-            if (Console.ReadLine() == "buy")
+            if (UIMethods.LeaveTheGame())
             {
                 Console.WriteLine($"the correct answer is: {CorrectAnswer}");
                 break;

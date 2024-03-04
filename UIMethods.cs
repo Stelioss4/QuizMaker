@@ -1,4 +1,6 @@
-﻿namespace QuizMaker
+﻿using System.ComponentModel.Design;
+
+namespace QuizMaker
 {
     public static class UIMethods
     {
@@ -46,14 +48,22 @@
             ConsoleKeyInfo keyInfo = Console.ReadKey();
             Console.Clear();
             {
-                return (keyInfo.Key == ConsoleKey.Spacebar);
+                return keyInfo.Key == ConsoleKey.Spacebar;
             }
         }
         public static void PlayWithExistedQuestions()
         {
             Console.WriteLine("OK then, Lets play !");
         }
-
+        public static bool LeaveTheGame()
+        {
+            Console.WriteLine("\nPress (ESCAPE) to leave the game or anything else to play!");
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
+            Console.Clear();
+            {
+                return keyInfo.Key == ConsoleKey.Escape;
+            }
+        }
     }
 }
 

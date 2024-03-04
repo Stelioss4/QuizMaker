@@ -17,6 +17,7 @@ namespace QuizMaker
         }
         public static void SaveAnswersToHardDrive(string path, Answers answerContent)
         {
+            path = @"C:\Users\PC\source\repos\QuizMaker\answers.xml";
             XmlSerializer serializer = new XmlSerializer(typeof(Answers));
             using (FileStream file = File.Create(path))
             {
@@ -24,7 +25,7 @@ namespace QuizMaker
             }
         }
 
-        public static void LoadQuestionsFromHardDrive(string path , Questions content)
+        public static void LoadQuestionsFromHardDrive(string path, Questions content)
         {
             path = @"C:\Users\PC\source\repos\QuizMaker\questions.xml";
             XmlSerializer serializer = new XmlSerializer(typeof(Questions));
@@ -32,17 +33,17 @@ namespace QuizMaker
             {
                 content = serializer.Deserialize(file) as Questions;
             }
-           
+
         }
         public static void LoadAnswersFromHardDrive(string path, Answers answerContent)
         {
-            path = @"C:\Users\PC\source\repos\QuizMaker\questions.xml";
+            path = @"C:\Users\PC\source\repos\QuizMaker\answers.xml";
             XmlSerializer serializer = new XmlSerializer(typeof(Answers));
             using (FileStream file = File.OpenRead(path))
             {
                 answerContent = serializer.Deserialize(file) as Answers;
             }
-           
+
         }
 
         public static string MakeRandomQuestion(Questions content)

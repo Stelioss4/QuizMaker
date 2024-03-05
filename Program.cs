@@ -1,6 +1,7 @@
 ﻿using QuizMaker;
 using System.IO;
 using System.Net.Mime;
+using System.Xml.Serialization;
 
 public class Program
 {
@@ -8,36 +9,28 @@ public class Program
     public static void Main(string[] args)
     {
         const string DONE = "done";
-        const int MAX_ANSWERS = 4;
 
         UIMethods.DisplayWelcomeMessag();
-        UIMethods.AskToPlayOrAddQuestions();
-
-        Questions content = new Questions();
-        Answers ansanswerContent = new Answers();
-
-        string path = "";
+        string path = @"C:\Users\PC\source\repos\QuizMaker\QuestionsandAnswers.xml";
         string answers = "";
-        string CorrectAnswer = "";
 
+        QuestionsAndAnswers questionsanswers = new QuestionsAndAnswers();
         if (UIMethods.AskToPlayOrAddQuestions())
         {
             while (true)
             {
-                string question = UIMethods.AddTheQuestions();
+                string question = UIMethods.WriteTheQuestions();
                 if (question.ToLower() == DONE)
                 {
                     break;
                 }
-                answers = UIMethods.AddTheAnswers();
-                CorrectAnswer = UIMethods.GiveTheCorrectAnswer();
+                answers = UIMethods.WriteTheAnswers();
+                string CorrectAnswer = UIMethods.GiveTheCorrectAnswer();
 
-                content.questions.Add(question);
-                ansanswerContent.answers.Add(answers);
-                ansanswerContent.CorrectAnswers.Add(CorrectAnswer);
-
-                Logic.SaveQuestionsToHardDrive(path, content);
-                Logic.SaveAnswersToHardDrive(path, ansanswerContent);
+                // Logic.AddQuestionsInTheList(questionsanswers);
+                questionsanswers.questionsANDanswers.Add(question);
+                questionsanswers.CorrectAnswer.Add(CorrectAnswer);
+                Logic.SaveToHardDrive(path, questionsanswers);
 
             }
         }
@@ -46,15 +39,16 @@ public class Program
         while (true)
         {
 
-            Logic.LoadQuestionsFromHardDrive(path , content);
-            Logic.LoadAnswersFromHardDrive(path , ansanswerContent);
-            string randomQuestion = Logic.MakeRandomQuestion(content);
+            questionsanswers = Logic.LoadFromHardDrive(path);
+            string randomQuestion = Logic.MakeRandomQuestion(questionsanswers);
             Console.WriteLine(randomQuestion);
             Console.WriteLine(answers);
 
+            string userAnswer = UIMethods.AnswerTheQestion("Please choose one of the answers!");
+            Logic.CompareTheAnswers();
+
             if (UIMethods.LeaveTheGame())
             {
-                Console.WriteLine($"the correct answer is: {CorrectAnswer}");
                 break;
             }
         }

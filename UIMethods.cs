@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Reflection.Metadata.Ecma335;
 
 namespace QuizMaker
 {
@@ -9,12 +10,13 @@ namespace QuizMaker
         {
             Console.WriteLine("HELLO! WELCOME ON QUIZ MAKER");
         }
-        public static string AddTheQuestions()
+        public static string WriteTheQuestions()
         {
             Console.WriteLine("Please write a question (type 'done' to finish):");
+
             return Console.ReadLine();
         }
-    public static string AddTheAnswers()
+        public static string WriteTheAnswers()
         {
             Console.WriteLine("Please write four additional answers for the question!");
             string answers = "";
@@ -44,7 +46,7 @@ namespace QuizMaker
 
         public static bool AskToPlayOrAddQuestions()
         {
-            Console.WriteLine("\nPress (SPACE) to add more questions or anything else to play!");
+            Console.WriteLine("\nPress (SPACE) to add more questionsANDanswers or anything else to play!");
             ConsoleKeyInfo keyInfo = Console.ReadKey();
             Console.Clear();
             {
@@ -63,6 +65,13 @@ namespace QuizMaker
             {
                 return keyInfo.Key == ConsoleKey.Escape;
             }
+
+        }
+        public static string AnswerTheQestion(string userAnswer)
+        {
+            Console.WriteLine("Please choose one of the answers!");
+            userAnswer = Console.ReadLine();
+            return userAnswer;
         }
     }
 }

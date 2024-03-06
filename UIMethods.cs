@@ -56,6 +56,7 @@ namespace QuizMaker
         public static void PlayWithExistedQuestions()
         {
             Console.WriteLine("OK then, Lets play !");
+            Console.Clear ();
         }
         public static bool LeaveTheGame()
         {

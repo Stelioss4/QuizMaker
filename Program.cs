@@ -19,8 +19,8 @@ public class Program
         {
             while (true)
             {
-                string question = UIMethods.WriteTheQuestions();
-                if (question.ToLower() == DONE)
+                string questions = UIMethods.WriteTheQuestions();
+                if (questions.ToLower() == DONE)
                 {
                     break;
                 }
@@ -28,8 +28,10 @@ public class Program
                 string CorrectAnswer = UIMethods.GiveTheCorrectAnswer();
 
                 // Logic.AddQuestionsInTheList(questionsanswers);
-                questionsanswers.questionsANDanswers.Add(question);
-                questionsanswers.CorrectAnswer.Add(CorrectAnswer);
+
+                questionsanswers.Questions.Add(questions);
+                questionsanswers.Answers.Add(answers);
+                questionsanswers.Correctanswers.Add(CorrectAnswer);
                 Logic.SaveToHardDrive(path, questionsanswers);
 
             }
@@ -45,8 +47,7 @@ public class Program
             Console.WriteLine(answers);
 
             string userAnswer = UIMethods.AnswerTheQestion("Please choose one of the answers!");
-            Logic.CompareTheAnswers();
-
+           
             if (UIMethods.LeaveTheGame())
             {
                 break;

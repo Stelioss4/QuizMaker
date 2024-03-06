@@ -2,16 +2,13 @@
 {
     public class QuestionsAndAnswers
     {
-        public List<string> questionsANDanswers { get; set; }
-        public List<string> CorrectAnswer { get; set; }
-        public QuestionsAndAnswers()
-        {
-            questionsANDanswers = new List<string>();
-            CorrectAnswer = new List<string>();
-        }
-
+        public string questions;
+        public string answers;
+        public string CorrectAnswer;
+        public List<string> Questions = new List<string>();
+        public List<string> Answers = new List<string>();
+        public List<string> Correctanswers = new List<string>();
     }
-    
 }
 
 

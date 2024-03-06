@@ -29,12 +29,12 @@ namespace QuizMaker
         public static string MakeRandomQuestion(QuestionsAndAnswers questions)
         {
             Random rng = new Random();
-            if (questions.questionsANDanswers.Count == 0)
+            if (questions.Questions.Count == 0)
             {
                 return "No questionsANDanswers available";
             }
-            int randomIndex = rng.Next(0, questions.questionsANDanswers.Count);
-            string randomQuestion = questions.questionsANDanswers[randomIndex];
+            int randomIndex = rng.Next(0, questions.Questions.Count);
+            string randomQuestion = questions.Questions[randomIndex];
             return randomQuestion;
         }
         //public static void AddQuestionsInTheList(QuestionsAndAnswers questionsanswers)

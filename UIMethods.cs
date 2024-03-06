@@ -5,6 +5,7 @@ namespace QuizMaker
 {
     public static class UIMethods
     {
+        const int LOW_ANSWERS_LIMMIT = 0;
         const int NUMBER_OF_ANSWERS = 4;
         public static void DisplayWelcomeMessag()
         {
@@ -20,21 +21,13 @@ namespace QuizMaker
         {
             Console.WriteLine("Please write four additional answers for the question!");
             string answers = "";
-            while (true)
-            {
-                try
-                {
-                    for (int i = 0; i < NUMBER_OF_ANSWERS; i++)
+                    List<string> Answers = new List<string>();
+                    for (int i = LOW_ANSWERS_LIMMIT; i < NUMBER_OF_ANSWERS; i++)
                     {
-                        answers += Console.ReadLine() + "\n";
+                        Console.Write($"Enter answer {i + 1}:");
+                        string answer = Console.ReadLine();
+                        Answers.Add(answer);
                     }
-                    break;
-                }
-                catch (System.NullReferenceException)
-                {
-                    Console.WriteLine("exepte null");
-                }
-            }
             return answers;
         }
         public static string GiveTheCorrectAnswer()

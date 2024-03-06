@@ -1,6 +1,4 @@
 ﻿using QuizMaker;
-using System.IO;
-using System.Net.Mime;
 using System.Xml.Serialization;
 
 public class Program
@@ -11,29 +9,34 @@ public class Program
         const string DONE = "done";
 
         UIMethods.DisplayWelcomeMessag();
-        string path = @"C:\Users\PC\source\repos\QuizMaker\QuestionsandAnswers.xml";
-        string answers = "";
 
-        QuestionsAndAnswers questionsanswers = new QuestionsAndAnswers();
+        string path = @"C:\Users\PC\source\repos\QuizMaker\Questions.xml";
+
+        List<QuestionsAndAnswers> questionsAndAnswers = new List<QuestionsAndAnswers>();
+        List<string> answers = new List<string>();
+
         if (UIMethods.AskToPlayOrAddQuestions())
         {
             while (true)
             {
                 string questions = UIMethods.WriteTheQuestions();
+
                 if (questions.ToLower() == DONE)
                 {
                     break;
                 }
-                answers = UIMethods.WriteTheAnswers();
+                UIMethods.WriteTheAnswers();
+
                 string CorrectAnswer = UIMethods.GiveTheCorrectAnswer();
 
-                // Logic.AddQuestionsInTheList(questionsanswers);
+                Logic.AddQuestionAndAnswers(questions, answers, CorrectAnswer);
 
-                questionsanswers.Questions.Add(questions);
-                questionsanswers.Answers.Add(answers);
-                questionsanswers.Correctanswers.Add(CorrectAnswer);
-                Logic.SaveToHardDrive(path, questionsanswers);
-
+                path = @"C:\Users\PC\source\repos\QuizMaker\Questions.xml";
+                XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
+                using (FileStream file = File.Create(path))
+                {
+                    serializer.Serialize(file, questionsAndAnswers);
+                }
             }
         }
 
@@ -41,13 +44,9 @@ public class Program
         while (true)
         {
 
-            questionsanswers = Logic.LoadFromHardDrive(path);
-            string randomQuestion = Logic.MakeRandomQuestion(questionsanswers);
-            Console.WriteLine(randomQuestion);
-            Console.WriteLine(answers);
+            List<QuestionsAndAnswers> LoadToPlay = Logic.LoadFromHardDrive(path);
+            string randomQuestion = Logic.MakeRandomQuestion(questionsAndAnswers);
 
-            string userAnswer = UIMethods.AnswerTheQestion("Please choose one of the answers!");
-           
             if (UIMethods.LeaveTheGame())
             {
                 break;
@@ -55,5 +54,3 @@ public class Program
         }
     }
 }
-
-

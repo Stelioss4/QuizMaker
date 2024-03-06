@@ -3,48 +3,42 @@ namespace QuizMaker
 {
     public static class Logic
     {
-        public static void SaveToHardDrive(string path, QuestionsAndAnswers questionsanswers)
+        public static void SaveToHardDrive(string path, ListofObjects questionsAndAnswers)
         {
-            path = @"C:\Users\PC\source\repos\QuizMaker\QuestionsandAnswers.xml";
-            XmlSerializer serializer = new XmlSerializer(typeof(QuestionsAndAnswers));
+            path = @"C:\Users\PC\source\repos\QuizMaker\Questions.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(ListofObjects));
             using (FileStream file = File.Create(path))
             {
-                serializer.Serialize(file, questionsanswers);
+                serializer.Serialize(file, questionsAndAnswers);
             }
+           
         }
 
 
-        public static QuestionsAndAnswers LoadFromHardDrive(string path)
+        public static List<QuestionsAndAnswers> LoadFromHardDrive(string path)
         {
-            path = @"C:\Users\PC\source\repos\QuizMaker\QuestionsandAnswers.xml";
-            XmlSerializer serializer = new XmlSerializer(typeof(QuestionsAndAnswers));
+            path = @"C:\Users\PC\source\repos\QuizMaker\Questions.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
             using (FileStream file = File.OpenRead(path))
             {
-                return (QuestionsAndAnswers)serializer.Deserialize(file);
-
+                return (List<QuestionsAndAnswers>)serializer.Deserialize(file);
             }
-
         }
 
-        public static string MakeRandomQuestion(QuestionsAndAnswers questions)
+
+
+        public static string MakeRandomQuestion(List<QuestionsAndAnswers> questionsAndAnswers)
         {
             Random rng = new Random();
-            if (questions.Questions.Count == 0)
+            if (questionsAndAnswers.Count == 0)
             {
-                return "No questionsANDanswers available";
+                return "No questions AND answers available";
             }
-            int randomIndex = rng.Next(0, questions.Questions.Count);
-            string randomQuestion = questions.Questions[randomIndex];
+            int randomIndex = rng.Next(0, questionsAndAnswers.Count);
+            string randomQuestion = questionsAndAnswers[randomIndex].Questions;
             return randomQuestion;
         }
-        //public static void AddQuestionsInTheList(QuestionsAndAnswers questionsanswers)
-        //{
-        //    string CorrectAnswer = "";
-        //    string question = "";
 
-        //    questionsanswers.questionsANDanswers.Add(question);
-        //    questionsanswers.CorrectAnswer.Add(CorrectAnswer);
-        //}
         public static void CompareTheAnswers()
         {
             string userAnswer = "";
@@ -63,7 +57,20 @@ namespace QuizMaker
             }
             Console.WriteLine($"your points are: {points}!");
         }
+        public static void AddQuestionAndAnswers(string questions, List<string> answers, string CorrectAnswer)
+        {
+            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
+            QuestionsAndAnswers questionAnswers = new QuestionsAndAnswers();
+            questionAnswers.Questions = questions;
+            foreach (string answer in answers)
+            {
+                questionAnswers.Answers.Add(answer);
+            }
+            questionAnswers.CorrectAnswer = CorrectAnswer;
+
+            QnAList.Add(questionAnswers);
+
+        }
     }
 }
-
 

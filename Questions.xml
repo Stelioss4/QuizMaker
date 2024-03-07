@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfQuestionsAndAnswers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <QuestionsAndAnswers>
-    <Questions>asd</Questions>
+    <Questions>who let the dogs out?</Questions>
     <Answers>
-      <string>asd</string>
-      <string>a</string>
-      <string>s</string>
-      <string>d</string>
+      <string>wof </string>
+      <string>waf</string>
+      <string>pau au</string>
+      <string>gav</string>
     </Answers>
-    <CorrectAnswer>asdasd</CorrectAnswer>
-  </QuestionsAndAnswers>
-  <QuestionsAndAnswers>
-    <Questions>jfjfj</Questions>
-    <Answers>
-      <string>yes</string>
-      <string>no</string>
-      <string>pleas</string>
-      <string>yeah!!</string>
-    </Answers>
-    <CorrectAnswer>yeah!!</CorrectAnswer>
+    <CorrectAnswer>gav</CorrectAnswer>
   </QuestionsAndAnswers>
 </ArrayOfQuestionsAndAnswers>

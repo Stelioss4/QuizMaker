@@ -50,8 +50,8 @@ namespace QuizMaker
         }
         public static void PlayWithExistedQuestions()
         {
-            Console.WriteLine("OK then, Lets play !");
-            Console.Clear ();
+            Console.Clear();
+            Console.WriteLine("\nOK then, Lets play !\n");
         }
         public static bool LeaveTheGame()
         {
@@ -63,11 +63,20 @@ namespace QuizMaker
             }
 
         }
-        public static string AnswerTheQestion(string userAnswer)
+        public static string AnswerTheQestion()
         {
             Console.WriteLine("Please choose one of the answers!");
-            userAnswer = Console.ReadLine();
+            string userAnswer = Console.ReadLine();
             return userAnswer;
+        }
+        public static void OutputTheRandomQuestion(QuestionsAndAnswers randomContent)
+        {
+            Console.WriteLine(randomContent.Questions);
+            Console.WriteLine("Answers:");
+            foreach (string answer in randomContent.Answers)
+            {
+                Console.WriteLine(answer);
+            }
         }
     }
 }

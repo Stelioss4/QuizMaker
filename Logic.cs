@@ -13,29 +13,37 @@ namespace QuizMaker
             }
         }
 
-
         public static List<QuestionsAndAnswers> LoadFromHardDrive(string path)
         {
-            path = @"C:\Users\PC\source\repos\QuizMaker\Questions.xml";
+            List<QuestionsAndAnswers> QnAList;
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
             using (FileStream file = File.OpenRead(path))
             {
-                return (List<QuestionsAndAnswers>)serializer.Deserialize(file);
+                QnAList = (List<QuestionsAndAnswers>)serializer.Deserialize(file);
             }
+            return QnAList;
         }
 
+        //public static List<QuestionsAndAnswers> LoadFromHardDrive(string path)
+        //{
+
+        //    XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
+        //    using (FileStream file = File.OpenRead(path))
+        //    {
+        //        return (List<QuestionsAndAnswers>)serializer.Deserialize(file);
+        //    }
+        //}
 
 
-        public static string MakeRandomQuestion(List<QuestionsAndAnswers> questionsAndAnswers)
+
+        public static QuestionsAndAnswers MakeRandomQuestion(List<QuestionsAndAnswers> QnAList)
         {
+            QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
             Random rng = new Random();
-            if (questionsAndAnswers.Count == 0)
-            {
-                return "No questions AND answers available";
-            }
-            int randomIndex = rng.Next(0, questionsAndAnswers.Count);
-            string randomQuestion = questionsAndAnswers[randomIndex].Questions;
-            return randomQuestion;
+
+            int randomIndex = rng.Next(0, QnAList.Count);
+            randomeContent = QnAList[randomIndex];
+            return randomeContent;
         }
 
         public static void CompareTheAnswers()

@@ -17,19 +17,21 @@ namespace QuizMaker
 
             return Console.ReadLine();
         }
-        public static string WriteTheAnswers()
+        public static List<string> WriteTheAnswers()
         {
             Console.WriteLine("Please write four additional answers for the question!");
-            string answers = "";
-                    List<string> Answers = new List<string>();
-                    for (int i = LOW_ANSWERS_LIMMIT; i < NUMBER_OF_ANSWERS; i++)
-                    {
-                        Console.Write($"Enter answer {i + 1}:");
-                        string answer = Console.ReadLine();
-                        Answers.Add(answer);
-                    }
+            List<string> answers = new List<string>();
+
+            for (int i = LOW_ANSWERS_LIMMIT; i < NUMBER_OF_ANSWERS; i++)
+            {
+                Console.Write($"Enter answer {i + 1}: ");
+                string answer = Console.ReadLine();
+                answers.Add(answer);
+            }
+
             return answers;
         }
+
         public static string GiveTheCorrectAnswer()
         {
             Console.WriteLine("choose the correct answer");

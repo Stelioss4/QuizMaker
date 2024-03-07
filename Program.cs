@@ -12,44 +12,43 @@ public class Program
 
         string path = @"C:\Users\PC\source\repos\QuizMaker\Questions.xml";
 
-        List<QuestionsAndAnswers> questionsAndAnswers = new List<QuestionsAndAnswers>();
-        List<string> answers = new List<string>();
+        QuestionsAndAnswers questionAnswers = new QuestionsAndAnswers();
+        List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
 
         if (UIMethods.AskToPlayOrAddQuestions())
         {
             while (true)
             {
-                string questions = UIMethods.WriteTheQuestions();
+                string question = UIMethods.WriteTheQuestions();
 
-                if (questions.ToLower() == DONE)
+                if (question.ToLower() == DONE)
                 {
                     break;
                 }
-                UIMethods.WriteTheAnswers();
 
+                List<string> answers = UIMethods.WriteTheAnswers();
                 string CorrectAnswer = UIMethods.GiveTheCorrectAnswer();
 
-                Logic.AddQuestionAndAnswers(questions, answers, CorrectAnswer);
-
-                path = @"C:\Users\PC\source\repos\QuizMaker\Questions.xml";
-                XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
-                using (FileStream file = File.Create(path))
+                List<QuestionsAndAnswers> newQuestionsAndAnswers = Logic.AddQnAToAList(question, answers, CorrectAnswer);
+                foreach (var QnA in newQuestionsAndAnswers)
                 {
-                    serializer.Serialize(file, questionsAndAnswers);
+                    QnAList.Add(QnA);
                 }
+
+                Logic.SaveToHardDrive(path, QnAList);
+                
             }
-        }
 
-        UIMethods.PlayWithExistedQuestions();
-        while (true)
-        {
-
-            List<QuestionsAndAnswers> LoadToPlay = Logic.LoadFromHardDrive(path);
-            string randomQuestion = Logic.MakeRandomQuestion(questionsAndAnswers);
-
-            if (UIMethods.LeaveTheGame())
+            UIMethods.PlayWithExistedQuestions();
+            while (true)
             {
-                break;
+                List<QuestionsAndAnswers> LoadToPlay = Logic.LoadFromHardDrive(path);
+                string randomQuestion = Logic.MakeRandomQuestion(LoadToPlay);
+
+                if (UIMethods.LeaveTheGame())
+                {
+                    break;
+                }
             }
         }
     }

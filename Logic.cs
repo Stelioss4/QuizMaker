@@ -3,15 +3,14 @@ namespace QuizMaker
 {
     public static class Logic
     {
-        public static void SaveToHardDrive(string path, ListofObjects questionsAndAnswers)
+       
+        public static void SaveToHardDrive(string path, List<QuestionsAndAnswers> QnAList)
         {
-            path = @"C:\Users\PC\source\repos\QuizMaker\Questions.xml";
-            XmlSerializer serializer = new XmlSerializer(typeof(ListofObjects));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
             using (FileStream file = File.Create(path))
             {
-                serializer.Serialize(file, questionsAndAnswers);
+                serializer.Serialize(file, QnAList);
             }
-           
         }
 
 
@@ -57,20 +56,22 @@ namespace QuizMaker
             }
             Console.WriteLine($"your points are: {points}!");
         }
-        public static void AddQuestionAndAnswers(string questions, List<string> answers, string CorrectAnswer)
+        public static List<QuestionsAndAnswers> AddQnAToAList(string questions, List<string> answers, string CorrectAnswer)
         {
-            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
             QuestionsAndAnswers questionAnswers = new QuestionsAndAnswers();
+            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
             questionAnswers.Questions = questions;
             foreach (string answer in answers)
             {
                 questionAnswers.Answers.Add(answer);
             }
             questionAnswers.CorrectAnswer = CorrectAnswer;
-
             QnAList.Add(questionAnswers);
 
+            return QnAList;
+
         }
+       
     }
 }
 

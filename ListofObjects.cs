@@ -2,7 +2,7 @@
 {
     public class ListofObjects
     {
-       public List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
-       public List<QuestionsAndAnswers> LoadToPlay = new List<QuestionsAndAnswers>();
+       public List<QuestionsAndAnswers> QnAList;
+        public List<QuestionsAndAnswers> LoadToPlay;
     }
 }

@@ -8,7 +8,7 @@
       <string>Mexico</string>
       <string>Italy</string>
     </Answers>
-    <CorrectAnswer>Mexico</CorrectAnswer>
+    <CorrectAnswer>3</CorrectAnswer>
   </QuestionsAndAnswers>
   <QuestionsAndAnswers>
     <Questions>What was the first fruit to be eaten on the Moon?</Questions>
@@ -18,7 +18,7 @@
       <string>Apple</string>
       <string>Banana</string>
     </Answers>
-    <CorrectAnswer>Peach</CorrectAnswer>
+    <CorrectAnswer>2</CorrectAnswer>
   </QuestionsAndAnswers>
   <QuestionsAndAnswers>
     <Questions>In which Italian city was pizza first made?</Questions>
@@ -28,7 +28,7 @@
       <string>Palermo</string>
       <string>Bergamo</string>
     </Answers>
-    <CorrectAnswer>Naples</CorrectAnswer>
+    <CorrectAnswer>1</CorrectAnswer>
   </QuestionsAndAnswers>
   <QuestionsAndAnswers>
     <Questions>Which country has the most Michelin starred restaurants?</Questions>
@@ -38,7 +38,7 @@
       <string>Japan</string>
       <string>Italy</string>
     </Answers>
-    <CorrectAnswer>France</CorrectAnswer>
+    <CorrectAnswer>1</CorrectAnswer>
   </QuestionsAndAnswers>
   <QuestionsAndAnswers>
     <Questions>Where were French fries invented?</Questions>
@@ -48,6 +48,6 @@
       <string>Holland</string>
       <string>USA</string>
     </Answers>
-    <CorrectAnswer>Belgium</CorrectAnswer>
+    <CorrectAnswer>2</CorrectAnswer>
   </QuestionsAndAnswers>
 </ArrayOfQuestionsAndAnswers>

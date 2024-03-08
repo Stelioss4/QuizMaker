@@ -31,7 +31,6 @@ namespace QuizMaker
             randomeContent = QnAList[randomIndex];
             return randomeContent;
         }
-
         public static List<QuestionsAndAnswers> AddQnAToAList(string questions, List<string> answers, string CorrectAnswer)
         {
             QuestionsAndAnswers questionAnswers = new QuestionsAndAnswers();

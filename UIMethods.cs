@@ -8,6 +8,7 @@ namespace QuizMaker
     public static class UIMethods
     {
         const int LOW_ANSWERS_LIMMIT = 0;
+        const int COUNT_ANSWER_HELP = 1;
         const int NUMBER_OF_ANSWERS = 4;
         public static void DisplayWelcomeMessag()
         {
@@ -23,17 +24,14 @@ namespace QuizMaker
         {
             Console.WriteLine("Please write four additional answers for the question!");
             List<string> answers = new List<string>();
-
             for (int i = LOW_ANSWERS_LIMMIT; i < NUMBER_OF_ANSWERS; i++)
             {
                 Console.Write($"Enter answer {i + 1}: ");
                 string answer = Console.ReadLine();
                 answers.Add(answer);
             }
-
             return answers;
         }
-
         public static string GiveTheCorrectAnswer()
         {
             Console.WriteLine("choose the correct answer");
@@ -62,7 +60,6 @@ namespace QuizMaker
             {
                 return keyInfo.Key == ConsoleKey.Escape;
             }
-
         }
         public static string AnswerTheQestion()
         {
@@ -73,14 +70,12 @@ namespace QuizMaker
         }
         public static void OutputTheRandomQuestion(QuestionsAndAnswers randomContent)
         {
+            int numberOfanswer = COUNT_ANSWER_HELP;
             Console.WriteLine(randomContent.Questions);
             foreach (string answer in randomContent.Answers)
             {
-                Console.WriteLine(answer);
+                Console.WriteLine($"{numberOfanswer++}:{answer}");
             }
-
         }
-        
     }
 }
-

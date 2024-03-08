@@ -12,7 +12,6 @@ public class Program
         string path = @"C:\Users\PC\source\repos\QuizMaker\Questions.xml";
 
         QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
-        QuestionsAndAnswers questionAnswers = new QuestionsAndAnswers();
         List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
 
         if (UIMethods.AskToPlayOrAddQuestions())

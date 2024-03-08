@@ -3,7 +3,7 @@ namespace QuizMaker
 {
     public static class Logic
     {
-       
+
         public static void SaveToHardDrive(string path, List<QuestionsAndAnswers> QnAList)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
@@ -12,7 +12,6 @@ namespace QuizMaker
                 serializer.Serialize(file, QnAList);
             }
         }
-
         public static List<QuestionsAndAnswers> LoadFromHardDrive(string path)
         {
             List<QuestionsAndAnswers> QnAList;
@@ -23,19 +22,6 @@ namespace QuizMaker
             }
             return QnAList;
         }
-
-        //public static List<QuestionsAndAnswers> LoadFromHardDrive(string path)
-        //{
-
-        //    XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
-        //    using (FileStream file = File.OpenRead(path))
-        //    {
-        //        return (List<QuestionsAndAnswers>)serializer.Deserialize(file);
-        //    }
-        //}
-
-
-
         public static QuestionsAndAnswers MakeRandomQuestion(List<QuestionsAndAnswers> QnAList)
         {
             QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
@@ -46,24 +32,6 @@ namespace QuizMaker
             return randomeContent;
         }
 
-        public static void CompareTheAnswers()
-        {
-            string userAnswer = "";
-            string CorrectAnswer = "";
-
-            int points = 0;
-
-            if (userAnswer.ToLower() == CorrectAnswer)
-            {
-                Console.WriteLine("Perfect!! You found the correct answer!!");
-                points++;
-            }
-            else
-            {
-                Console.WriteLine($"Sorry your Answer is fauls. The correct answer is {CorrectAnswer}");
-            }
-            Console.WriteLine($"your points are: {points}!");
-        }
         public static List<QuestionsAndAnswers> AddQnAToAList(string questions, List<string> answers, string CorrectAnswer)
         {
             QuestionsAndAnswers questionAnswers = new QuestionsAndAnswers();
@@ -79,7 +47,21 @@ namespace QuizMaker
             return QnAList;
 
         }
-       
+        public static int CompareTheAnswers(QuestionsAndAnswers randomQuestion, string userAnswer, int points)
+        {
+            if (randomQuestion.CorrectAnswer == userAnswer)
+            {
+                points++;
+                Console.WriteLine($"Perfect!! The correct answer is: {randomQuestion.CorrectAnswer}!!!\n");
+            }
+            else
+            {
+                Console.WriteLine($"Sorry.. The correct answer is: {randomQuestion.CorrectAnswer}\n");
+            }
+            Console.WriteLine($"your points are: {points}!!");
+            
+            return points;
+        }
     }
 }
 

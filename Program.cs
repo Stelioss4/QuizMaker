@@ -41,8 +41,10 @@ public class Program
             }
         }
         UIMethods.PlayWithExistedQuestions();
+        int points = 0;
         while (true)
         {
+           
             QnAList = Logic.LoadFromHardDrive(path);
 
             randomeContent = Logic.MakeRandomQuestion(QnAList);
@@ -51,12 +53,12 @@ public class Program
 
             string userAnswer = UIMethods.AnswerTheQestion();
 
+            points = Logic.CompareTheAnswers(randomeContent , userAnswer, points);
 
             if (UIMethods.LeaveTheGame())
             {
                 break;
             }
         }
-
     }
 }

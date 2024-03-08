@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.Design;
+using System.Drawing;
+using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
 
 namespace QuizMaker
@@ -57,7 +59,6 @@ namespace QuizMaker
         {
             Console.WriteLine("\nPress (ESCAPE) to leave the game or anything else to play!");
             ConsoleKeyInfo keyInfo = Console.ReadKey();
-            Console.Clear();
             {
                 return keyInfo.Key == ConsoleKey.Escape;
             }
@@ -67,17 +68,19 @@ namespace QuizMaker
         {
             Console.WriteLine("Please choose one of the answers!");
             string userAnswer = Console.ReadLine();
+            Console.Clear();
             return userAnswer;
         }
         public static void OutputTheRandomQuestion(QuestionsAndAnswers randomContent)
         {
             Console.WriteLine(randomContent.Questions);
-            Console.WriteLine("Answers:");
             foreach (string answer in randomContent.Answers)
             {
                 Console.WriteLine(answer);
             }
+
         }
+        
     }
 }
 

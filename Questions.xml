@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfQuestionsAndAnswers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <QuestionsAndAnswers>
-    <Questions>who let the dogs out?</Questions>
+    <Questions>In what country was the Caesar salad invented?</Questions>
     <Answers>
-      <string>wof </string>
-      <string>waf</string>
-      <string>pau au</string>
-      <string>gav</string>
+      <string>USA</string>
+      <string>Poland</string>
+      <string>Mexico</string>
+      <string>Italy</string>
     </Answers>
-    <CorrectAnswer>gav</CorrectAnswer>
+    <CorrectAnswer>Mexico</CorrectAnswer>
+  </QuestionsAndAnswers>
+  <QuestionsAndAnswers>
+    <Questions>What was the first fruit to be eaten on the Moon?</Questions>
+    <Answers>
+      <string>Grapes</string>
+      <string>Peach</string>
+      <string>Apple</string>
+      <string>Banana</string>
+    </Answers>
+    <CorrectAnswer>Peach</CorrectAnswer>
+  </QuestionsAndAnswers>
+  <QuestionsAndAnswers>
+    <Questions>In which Italian city was pizza first made?</Questions>
+    <Answers>
+      <string>Naples</string>
+      <string>Rome</string>
+      <string>Palermo</string>
+      <string>Bergamo</string>
+    </Answers>
+    <CorrectAnswer>Naples</CorrectAnswer>
+  </QuestionsAndAnswers>
+  <QuestionsAndAnswers>
+    <Questions>Which country has the most Michelin starred restaurants?</Questions>
+    <Answers>
+      <string>France</string>
+      <string>India</string>
+      <string>Japan</string>
+      <string>Italy</string>
+    </Answers>
+    <CorrectAnswer>France</CorrectAnswer>
+  </QuestionsAndAnswers>
+  <QuestionsAndAnswers>
+    <Questions>Where were French fries invented?</Questions>
+    <Answers>
+      <string>France</string>
+      <string>Belgium</string>
+      <string>Holland</string>
+      <string>USA</string>
+    </Answers>
+    <CorrectAnswer>Belgium</CorrectAnswer>
   </QuestionsAndAnswers>
 </ArrayOfQuestionsAndAnswers>

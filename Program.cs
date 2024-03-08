@@ -2,8 +2,7 @@
 using System.Xml.Serialization;
 
 public class Program
-{
-
+{ 
     public static void Main(string[] args)
     {
         const string DONE = "done";

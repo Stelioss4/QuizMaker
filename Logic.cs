@@ -36,16 +36,19 @@ namespace QuizMaker
         {
             QuestionsAndAnswers questionAnswers = new QuestionsAndAnswers();
             List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
+
             questionAnswers.Questions = questions;
+
             foreach (string answer in answers)
             {
                 questionAnswers.Answers.Add(answer);
             }
+
             questionAnswers.CorrectAnswer = CorrectAnswer;
+
             QnAList.Add(questionAnswers);
 
             return QnAList;
-
         }
         public static int CompareTheAnswers(QuestionsAndAnswers randomQuestion, string userAnswer, int points)
         {

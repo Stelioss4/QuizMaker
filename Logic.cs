@@ -12,20 +12,37 @@ namespace QuizMaker
                 serializer.Serialize(file, QnAList);
             }
         }
-        public static List<QuestionsAndAnswers> LoadFromHardDrive(string path)
+        public static List<QuestionsAndAnswers> LoadFromHardDrive(string path, List<QuestionsAndAnswers>? QnAList)
         {
-            List<QuestionsAndAnswers> QnAList;
-            XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
-            using (FileStream file = File.OpenRead(path))
+            while (true)
             {
-                QnAList = (List<QuestionsAndAnswers>)serializer.Deserialize(file);
+
+                XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
+                try
+                {
+                    using (FileStream file = File.OpenRead(path))
+                    {
+                        QnAList = (List<QuestionsAndAnswers>)serializer.Deserialize(file);
+                    }
+
+                }
+                catch (FileNotFoundException)
+                {
+                    Console.WriteLine("sorry no xml files didected. . .");
+                   
+                }
+                return QnAList;
             }
-            return QnAList;
         }
         public static QuestionsAndAnswers MakeRandomQuestion(List<QuestionsAndAnswers> QnAList)
         {
             QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
             Random rng = new Random();
+            if (QnAList.Count == 0)
+            {
+                return null;
+
+            }
 
             int randomIndex = rng.Next(0, QnAList.Count);
             randomeContent = QnAList[randomIndex];
@@ -51,6 +68,10 @@ namespace QuizMaker
         }
         public static int CompareTheAnswers(QuestionsAndAnswers randomQuestion, string userAnswer, int points)
         {
+            if(randomQuestion.Answers.Count == 0)
+            {
+                Console.WriteLine("Sorry no Questions and Answers loaded"); 
+            }
             if (randomQuestion.CorrectAnswer == userAnswer)
             {
                 points++;
@@ -61,7 +82,7 @@ namespace QuizMaker
                 Console.WriteLine($"Sorry.. The correct answer is: {randomQuestion.CorrectAnswer}\n");
             }
             Console.WriteLine($"your points are: {points}!!");
-            
+
             return points;
         }
     }

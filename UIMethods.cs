@@ -70,12 +70,26 @@ namespace QuizMaker
         }
         public static void OutputTheRandomQuestion(QuestionsAndAnswers randomContent)
         {
-            int numberOfanswer = COUNT_ANSWER_HELP;
+            if (randomContent == null)
+            {
+                Console.WriteLine("Sorry, no question available.");
+                return;
+            }
+
             Console.WriteLine(randomContent.Questions);
+
+            if (randomContent.Answers == null || randomContent.Answers.Count == 0)
+            {
+                Console.WriteLine("Sorry, no answers available.");
+                return;
+            }
+
+            int numberOfAnswer = COUNT_ANSWER_HELP;
             foreach (string answer in randomContent.Answers)
             {
-                Console.WriteLine($"{numberOfanswer++}:{answer}");
+                Console.WriteLine($"{numberOfAnswer++}: {answer}");
             }
         }
+
     }
 }

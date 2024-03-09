@@ -12,7 +12,7 @@ namespace QuizMaker
                 serializer.Serialize(file, QnAList);
             }
         }
-        public static List<QuestionsAndAnswers> LoadFromHardDrive(string path, List<QuestionsAndAnswers>? QnAList)
+        public static List<QuestionsAndAnswers> LoadFromHardDrive(string path, List<QuestionsAndAnswers> QnAList)
         {
             while (true)
             {

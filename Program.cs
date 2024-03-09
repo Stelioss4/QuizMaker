@@ -6,7 +6,7 @@ public class Program
     public static void Main(string[] args)
     {
         const string DONE = "done";
-        const string PATH = "hshhshasQuestions.xml";
+        const string PATH = "Questions.xml";
 
         UIMethods.DisplayWelcomeMessag();
 
@@ -32,16 +32,13 @@ public class Program
                 {
                     QnAList.Add(QnA);
                 }
-
             }
                 Logic.SaveToHardDrive(PATH, QnAList);
-
         }
         UIMethods.PlayWithExistedQuestions();
         int points = 0;
         while (true)
         {
-           
             QnAList = Logic.LoadFromHardDrive(PATH, QnAList);
 
             randomeContent = Logic.MakeRandomQuestion(QnAList);
@@ -55,7 +52,6 @@ public class Program
                 Console.WriteLine("Sorry, no Questions and Answers loaded.");
                 break;
             }
-
 
             points = Logic.CompareTheAnswers(randomeContent , userAnswer, points);
 

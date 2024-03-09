@@ -47,7 +47,7 @@ public class Program
 
             UIMethods.OutputTheRandomQuestion(randomeContent);
 
-            string userAnswer = UIMethods.AnswerTheQestion();
+            string userAnswer = UIMethods.ReadCorrectAnswerInput();
 
             if (randomeContent == null || randomeContent.Answers == null || randomeContent.Answers.Count == 0)
             {

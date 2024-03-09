@@ -8,8 +8,12 @@ namespace QuizMaker
     public static class UIMethods
     {
         const int LOW_ANSWERS_LIMMIT = 0;
-        const int COUNT_ANSWER_HELP = 1;
-        const int NUMBER_OF_ANSWERS = 4;
+        const int ANSWER_COUNT_HELP = 1;
+        const int UPPER_ANSWER_LIMMIT = 4;
+        const string FIRST_ANSWER = "1";
+        const string SECOND_ANSWER = "2";
+        const string THIRD_ANSWER = "3";
+        const string FOURTH_ANSWER = "4";
         public static void DisplayWelcomeMessage()
         {
             Console.WriteLine("HELLO! WELCOME ON QUIZ MAKER");
@@ -24,7 +28,7 @@ namespace QuizMaker
         {
             Console.WriteLine("Please write four additional answers for the question!");
             List<string> answers = new List<string>();
-            for (int i = LOW_ANSWERS_LIMMIT; i < NUMBER_OF_ANSWERS; i++)
+            for (int i = LOW_ANSWERS_LIMMIT; i < UPPER_ANSWER_LIMMIT; i++)
             {
                 Console.Write($"Enter answer {i + 1}: ");
                 string answer = Console.ReadLine();
@@ -61,13 +65,24 @@ namespace QuizMaker
                 return keyInfo.Key == ConsoleKey.Escape;
             }
         }
-        public static string AnswerTheQestion()
+        public static string ReadCorrectAnswerInput()
         {
-            Console.WriteLine("Please choose one of the answers!");
-            string userAnswer = Console.ReadLine();
-            Console.Clear();
-            return userAnswer;
+            while (true)
+            {
+                Console.WriteLine("Please choose one of the answers (1, 2, 3, or 4):");
+                string userAnswer = Console.ReadLine();
+                if (userAnswer == FIRST_ANSWER || userAnswer == SECOND_ANSWER || userAnswer == THIRD_ANSWER || userAnswer == FOURTH_ANSWER)
+                {
+                    Console.Clear();
+                    return userAnswer;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a number between 1 and 4.");
+                }
+            }
         }
+
         public static void OutputTheRandomQuestion(QuestionsAndAnswers randomContent)
         {
             if (randomContent == null)
@@ -84,7 +99,7 @@ namespace QuizMaker
                 return;
             }
 
-            int numberOfAnswer = COUNT_ANSWER_HELP;
+            int numberOfAnswer = ANSWER_COUNT_HELP;
             foreach (string answer in randomContent.Answers)
             {
                 Console.WriteLine($"{numberOfAnswer++}: {answer}");

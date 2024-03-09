@@ -8,7 +8,7 @@ public class Program
         const string DONE = "done";
         const string PATH = "Questions.xml";
 
-        UIMethods.DisplayWelcomeMessag();
+        UIMethods.DisplayWelcomeMessage();
 
         QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
         List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
@@ -35,7 +35,7 @@ public class Program
             }
                 Logic.SaveToHardDrive(PATH, QnAList);
         }
-        UIMethods.PlayWithExistedQuestions();
+        UIMethods.DisplayMessageForPlay();
         int points = 0;
         while (true)
         {

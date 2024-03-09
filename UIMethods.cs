@@ -10,7 +10,7 @@ namespace QuizMaker
         const int LOW_ANSWERS_LIMMIT = 0;
         const int COUNT_ANSWER_HELP = 1;
         const int NUMBER_OF_ANSWERS = 4;
-        public static void DisplayWelcomeMessag()
+        public static void DisplayWelcomeMessage()
         {
             Console.WriteLine("HELLO! WELCOME ON QUIZ MAKER");
         }
@@ -48,7 +48,7 @@ namespace QuizMaker
                 return keyInfo.Key == ConsoleKey.Spacebar;
             }
         }
-        public static void PlayWithExistedQuestions()
+        public static void DisplayMessageForPlay()
         {
             Console.Clear();
             Console.WriteLine("\nOK then, Lets play !\n");

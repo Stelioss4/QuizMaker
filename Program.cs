@@ -2,7 +2,7 @@
 using System.Xml.Serialization;
 
 public class Program
-{ 
+{
     public static void Main(string[] args)
     {
         const string DONE = "done";
@@ -12,6 +12,7 @@ public class Program
 
         QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
         List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
+        Random rng = new Random();
 
         if (UIMethods.AskToPlayOrAddQuestions())
         {
@@ -33,15 +34,16 @@ public class Program
                     QnAList.Add(QnA);
                 }
             }
-                Logic.SaveToHardDrive(PATH, QnAList);
+            Logic.SaveToHardDrive(PATH, QnAList);
         }
+
         UIMethods.DisplayMessageForPlay();
         int points = 0;
         while (true)
         {
             QnAList = Logic.LoadFromHardDrive(PATH, QnAList);
 
-            randomeContent = Logic.MakeRandomQuestion(QnAList);
+            randomeContent = Logic.MakeRandomQuestion(QnAList , rng);
 
             UIMethods.OutputTheRandomQuestion(randomeContent);
 
@@ -53,7 +55,7 @@ public class Program
                 break;
             }
 
-            points = Logic.CompareTheAnswers(randomeContent , userAnswer, points);
+            points = Logic.CompareTheAnswers(randomeContent, userAnswer, points);
 
             if (UIMethods.LeaveTheGame())
             {

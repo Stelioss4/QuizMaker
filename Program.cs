@@ -17,6 +17,8 @@ public class Program
 
         if (UIMethods.AskToPlayOrAddQuestions())
         {
+            QnAList = Logic.LoadFromHardDrive();
+
             while (true)
             {
                 string question = UIMethods.WriteTheQuestions();
@@ -35,14 +37,14 @@ public class Program
                     QnAList.Add(QnA);
                 }
             }
-            Logic.SaveToHardDrive(PATH, QnAList);
+            Logic.SaveToHardDrive(QnAList);
         }
 
         UIMethods.DisplayMessageForPlay();
         int points = 0;
         while (true)
         {
-            QnAList = Logic.LoadFromHardDrive(PATH, QnAList);
+            QnAList = Logic.LoadFromHardDrive();
 
             randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
 

@@ -3,24 +3,28 @@ namespace QuizMaker
 {
     public static class Logic
     {
+        const string PATH = "QuestionsandAnswers.xml";
 
-        public static void SaveToHardDrive(string path, List<QuestionsAndAnswers> QnAList)
+        public static void SaveToHardDrive( List<QuestionsAndAnswers> QnAList)
         {
+            
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
-            using (FileStream file = File.Create(path))
+            using (FileStream file = File.Create(PATH))
             {
                 serializer.Serialize(file, QnAList);
             }
         }
-        public static List<QuestionsAndAnswers> LoadFromHardDrive(string path, List<QuestionsAndAnswers> QnAList)
+        public static List<QuestionsAndAnswers> LoadFromHardDrive()
         {
+            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
+
             while (true)
             {
 
                 XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
                 try
                 {
-                    using (FileStream file = File.OpenRead(path))
+                    using (FileStream file = File.OpenRead(PATH))
                     {
                         QnAList = (List<QuestionsAndAnswers>)serializer.Deserialize(file);
                     }

@@ -29,7 +29,7 @@ namespace QuizMaker
                 catch (FileNotFoundException)
                 {
                     Console.WriteLine("sorry no xml files didected. . .");
-                   
+
                 }
                 return QnAList;
             }
@@ -47,7 +47,7 @@ namespace QuizMaker
             randomeContent = QnAList[randomIndex];
             return randomeContent;
         }
-        public static List<QuestionsAndAnswers> AddQnAToAList(string questions, List<string> answers, string CorrectAnswer)
+        public static List<QuestionsAndAnswers> AddQnAToAList(string questions, List<string> answers, int CorrectAnswer)
         {
             QuestionsAndAnswers questionAnswers = new QuestionsAndAnswers();
             List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
@@ -65,11 +65,11 @@ namespace QuizMaker
 
             return QnAList;
         }
-        public static int CompareTheAnswers(QuestionsAndAnswers randomQuestion, string userAnswer, int points)
+        public static int CompareTheAnswers(QuestionsAndAnswers randomQuestion, int userAnswer, int points)
         {
-            if(randomQuestion.Answers.Count == 0)
+            if (randomQuestion.Answers.Count == 0)
             {
-                Console.WriteLine("Sorry no Questions and Answers loaded"); 
+                Console.WriteLine("Sorry no Questions and Answers loaded");
             }
             if (randomQuestion.CorrectAnswer == userAnswer)
             {

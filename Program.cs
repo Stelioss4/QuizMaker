@@ -6,12 +6,13 @@ public class Program
     public static void Main(string[] args)
     {
         const string DONE = "done";
-        const string PATH = "Questions.xml";
+        const string PATH = "QuestionsandAnswers.xml";
 
         UIMethods.DisplayWelcomeMessage();
 
         QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
         List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
+        List<QuestionsAndAnswers> newQuestionsAndAnswers = new List<QuestionsAndAnswers>();
         Random rng = new Random();
 
         if (UIMethods.AskToPlayOrAddQuestions())
@@ -26,9 +27,9 @@ public class Program
                 }
 
                 List<string> answers = UIMethods.WriteTheAnswers();
-                string CorrectAnswer = UIMethods.GiveTheCorrectAnswer();
+                int CorrectAnswer = UIMethods.GiveTheCorrectAnswer();
 
-                List<QuestionsAndAnswers> newQuestionsAndAnswers = Logic.AddQnAToAList(question, answers, CorrectAnswer);
+                newQuestionsAndAnswers = Logic.AddQnAToAList(question, answers, CorrectAnswer);
                 foreach (var QnA in newQuestionsAndAnswers)
                 {
                     QnAList.Add(QnA);
@@ -43,11 +44,11 @@ public class Program
         {
             QnAList = Logic.LoadFromHardDrive(PATH, QnAList);
 
-            randomeContent = Logic.MakeRandomQuestion(QnAList , rng);
+            randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
 
             UIMethods.OutputTheRandomQuestion(randomeContent);
 
-            string userAnswer = UIMethods.ReadCorrectAnswerInput();
+            int userAnswer = UIMethods.ReadCorrectAnswerInput();
 
             if (randomeContent == null || randomeContent.Answers == null || randomeContent.Answers.Count == 0)
             {

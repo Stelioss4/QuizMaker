@@ -4,6 +4,6 @@
     {
         public string Questions;
         public List<string> Answers = new List<string>();
-        public string CorrectAnswer;
+        public int CorrectAnswer;
     }
 }

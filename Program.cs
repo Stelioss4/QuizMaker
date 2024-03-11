@@ -50,13 +50,12 @@ public class Program
 
             UIMethods.OutputTheRandomQuestion(randomeContent);
 
-            int userAnswer = UIMethods.ReadCorrectAnswerInput();
-
-            if (randomeContent == null || randomeContent.Answers == null || randomeContent.Answers.Count == 0)
+            if(UIMethods.DisplayNoQnALoaded(randomeContent) == false)
             {
-                Console.WriteLine("Sorry, no Questions and Answers loaded.");
                 break;
             }
+
+            int userAnswer = UIMethods.ReadCorrectAnswerInput();
 
             points = Logic.CompareTheAnswers(randomeContent, userAnswer, points);
 
@@ -64,6 +63,9 @@ public class Program
             {
                 break;
             }
+
+
+
         }
     }
 }

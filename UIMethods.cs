@@ -1,9 +1,4 @@
-﻿using System.ComponentModel.Design;
-using System.Drawing;
-using System.Reflection;
-using System.Reflection.Metadata.Ecma335;
-
-namespace QuizMaker
+﻿namespace QuizMaker
 {
     public static class UIMethods
     {
@@ -14,6 +9,7 @@ namespace QuizMaker
         const int SECOND_ANSWER = 2;
         const int THIRD_ANSWER = 3;
         const int FOURTH_ANSWER = 4;
+
         public static void DisplayWelcomeMessage()
         {
             Console.WriteLine("HELLO! WELCOME ON QUIZ MAKER");
@@ -119,5 +115,14 @@ namespace QuizMaker
             }
         }
 
+        public static bool DisplayNoQnALoaded(QuestionsAndAnswers randomeContent)
+        {
+            if (randomeContent == null || randomeContent.Answers == null || randomeContent.Answers.Count == 0)
+            {
+                Console.WriteLine("Sorry, no Questions and Answers loaded.");
+                return false;
+            }
+            return true;
+        }
     }
 }

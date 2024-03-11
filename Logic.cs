@@ -32,8 +32,7 @@ namespace QuizMaker
                 }
                 catch (FileNotFoundException)
                 {
-                    Console.WriteLine("sorry no xml files didected. . .");
-
+                    Console.WriteLine("sorry, no xml files didected. . .");
                 }
                 return QnAList;
             }
@@ -43,8 +42,7 @@ namespace QuizMaker
             QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
             if (QnAList.Count == 0)
             {
-                return null;
-
+                return null;   
             }
 
             int randomIndex = rng.Next(0, QnAList.Count);
@@ -88,6 +86,7 @@ namespace QuizMaker
 
             return points;
         }
+       
     }
 }
 

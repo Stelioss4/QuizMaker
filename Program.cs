@@ -6,7 +6,6 @@ public class Program
     public static void Main(string[] args)
     {
         const string DONE = "done";
-        const string PATH = "QuestionsandAnswers.xml";
 
         UIMethods.DisplayWelcomeMessage();
 

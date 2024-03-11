@@ -3,12 +3,9 @@
     public static class UIMethods
     {
         const int LOW_ANSWERS_LIMMIT = 0;
-        const int ANSWER_COUNT_HELP = 1;
+        const int ANSWER_COUNT_HELP_LOW = 1;
+        const int ANSWER_COUNT_HELP_HIGH = 5;
         const int UPPER_ANSWER_LIMMIT = 4;
-        const int FIRST_ANSWER = 1;
-        const int SECOND_ANSWER = 2;
-        const int THIRD_ANSWER = 3;
-        const int FOURTH_ANSWER = 4;
 
         public static void DisplayWelcomeMessage()
         {
@@ -48,7 +45,6 @@
                 }
             }
         }
-
         public static bool AskToPlayOrAddQuestions()
         {
             Console.WriteLine("\nPress (SPACE) to add more questionsANDanswers or anything else to play!");
@@ -79,19 +75,22 @@
                 try
                 {
                     int userAnswer = Convert.ToInt32(Console.ReadLine());
-                    if (userAnswer == FIRST_ANSWER || userAnswer == SECOND_ANSWER || userAnswer == THIRD_ANSWER || userAnswer == FOURTH_ANSWER)
+
+                    for (int i =ANSWER_COUNT_HELP_LOW; i < ANSWER_COUNT_HELP_HIGH; i++)
                     {
-                        Console.Clear();
-                        return userAnswer;
+                        if (userAnswer == i)
+                        {
+                            Console.Clear();
+                            return userAnswer;
+                        }
                     }
                 }
-                catch (System.FormatException)
+                catch (System.Exception)
                 {
                     Console.WriteLine("Invalid input. Please enter a number between 1 and 4.");
                 }
             }
         }
-
         public static void OutputTheRandomQuestion(QuestionsAndAnswers randomContent)
         {
             if (randomContent == null)
@@ -108,13 +107,12 @@
                 return;
             }
 
-            int numberOfAnswer = ANSWER_COUNT_HELP;
+            int numberOfAnswer = ANSWER_COUNT_HELP_LOW;
             foreach (string answer in randomContent.Answers)
             {
                 Console.WriteLine($"{numberOfAnswer++}: {answer}");
             }
         }
-
         public static bool DisplayNoQnALoaded(QuestionsAndAnswers randomeContent)
         {
             if (randomeContent == null || randomeContent.Answers == null || randomeContent.Answers.Count == 0)

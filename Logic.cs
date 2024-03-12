@@ -32,7 +32,7 @@ namespace QuizMaker
                 }
                 catch (FileNotFoundException)
                 {
-                    Console.WriteLine("sorry, no xml files didected. . .");
+                    QnAList = new List<QuestionsAndAnswers>();
                 }
                 return QnAList;
             }

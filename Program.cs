@@ -48,7 +48,7 @@ public class Program
 
             UIMethods.OutputTheRandomQuestion(randomeContent);
 
-            if(UIMethods.DisplayNoQnALoaded(randomeContent) == false)
+            if (UIMethods.DisplayNoQnALoaded(randomeContent) == false)
             {
                 break;
             }

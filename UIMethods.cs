@@ -34,12 +34,13 @@
             Console.WriteLine("choose 1, 2, 3, 4 for the correct answer");
             while (true)
             {
-                try
+                int CorrectAnswer = 0;
+                if(int.TryParse(Console.ReadLine(), out CorrectAnswer) && CorrectAnswer< ANSWER_COUNT_HELP_HIGH)
+             
                 {
-                    int CorrectAnswer = Convert.ToInt32(Console.ReadLine());
                     return CorrectAnswer;
                 }
-                catch (System.FormatException)
+                else
                 {
                     Console.WriteLine("Invalid input. Please enter a number between 1 and 4.");
                 }
@@ -76,7 +77,7 @@
                 {
                     int userAnswer = Convert.ToInt32(Console.ReadLine());
 
-                    for (int i =ANSWER_COUNT_HELP_LOW; i < ANSWER_COUNT_HELP_HIGH; i++)
+                    for (int i = ANSWER_COUNT_HELP_LOW; i < ANSWER_COUNT_HELP_HIGH; i++)
                     {
                         if (userAnswer == i)
                         {

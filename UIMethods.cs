@@ -14,7 +14,7 @@
         public static string WriteTheQuestions()
         {
             Console.WriteLine("Please write a question (type 'done' to finish):");
-
+            
             return Console.ReadLine();
         }
         public static List<string> WriteTheAnswers()
@@ -58,11 +58,14 @@
         public static void DisplayMessageForPlay()
         {
             Console.Clear();
+            Console.WriteLine("**********************");
             Console.WriteLine("\nOK then, Lets play !\n");
+            Console.WriteLine("**********************");
         }
         public static bool LeaveTheGame()
         {
-            Console.WriteLine("\nPress (ESCAPE) to leave the game or anything else to play!");
+            Console.WriteLine("\nPress (ESCAPE) to leave the game or anything else to play!\n");
+            Console.WriteLine("************************************************************");
             ConsoleKeyInfo keyInfo = Console.ReadKey();
             {
                 return keyInfo.Key == ConsoleKey.Escape;
@@ -113,14 +116,9 @@
                 Console.WriteLine($"{numberOfAnswer++}: {answer}");
             }
         }
-        public static bool DisplayNoQnALoaded(QuestionsAndAnswers randomeContent)
+        public static void DisplayGoodBuyMessage()
         {
-            if (randomeContent == null || randomeContent.Answers == null || randomeContent.Answers.Count == 0)
-            {
-                Console.WriteLine("Sorry, no Questions and Answers loaded.");
-                return false;
-            }
-            return true;
+            Console.WriteLine("oOK, Goodbuy!! See you next time!!");
         }
     }
 }

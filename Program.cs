@@ -4,51 +4,42 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        const string DONE = "done";
 
         UIMethods.DisplayWelcomeMessage();
 
-        QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
+        QuestionsAndAnswers questionandAnswers = new QuestionsAndAnswers();
         List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
-        List<QuestionsAndAnswers> newQuestionsAndAnswers = new List<QuestionsAndAnswers>();
         Random rng = new Random();
 
         if (UIMethods.AskToPlayOrAddQuestions())
         {
-            QnAList = Logic.LoadFromHardDrive();
-
+            QnAList = Logic.LoadFromHardDrive(QnAList);
             while (true)
             {
-                string question = UIMethods.WriteTheQuestions();
+                    questionandAnswers = Logic.AddQnAToObject();
+                    QnAList.Add(questionandAnswers);
 
-                if (question.ToLower() == DONE)
+                if (Logic.DesideToWriteMoreQnAOrNot(questionandAnswers) == true)
                 {
                     break;
                 }
-
-                List<string> answers = UIMethods.WriteTheAnswers();
-                int CorrectAnswer = UIMethods.GiveTheCorrectAnswer();
-
-                newQuestionsAndAnswers = Logic.AddQnAToAList(question, answers, CorrectAnswer);
-                foreach (var QnA in newQuestionsAndAnswers)
-                {
-                    QnAList.Add(QnA);
-                }
             }
-            Logic.SaveToHardDrive(QnAList);
-        }
 
+            Logic.SaveToHardDrive(QnAList, questionandAnswers);
+        }
         UIMethods.DisplayMessageForPlay();
         int points = 0;
         while (true)
         {
-            QnAList = Logic.LoadFromHardDrive();
+            QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
+
+            QnAList = Logic.LoadFromHardDrive(QnAList);
 
             randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
 
             UIMethods.OutputTheRandomQuestion(randomeContent);
 
-            if (UIMethods.DisplayNoQnALoaded(randomeContent) == false)
+            if (Logic.ChekIfNoQnALoaded(randomeContent) == false)
             {
                 break;
             }
@@ -59,11 +50,9 @@ public class Program
 
             if (UIMethods.LeaveTheGame())
             {
+                UIMethods.DisplayGoodBuyMessage();
                 break;
             }
-
-
-
         }
     }
 }

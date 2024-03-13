@@ -19,7 +19,8 @@ public class Program
                     questionandAnswers = Logic.AddQnAToObject();
                     QnAList.Add(questionandAnswers);
 
-                if (Logic.DesideToWriteMoreQnAOrNot(questionandAnswers) == true)
+                UIMethods.DesideToWriteMoreQnAOrNot();
+                if (UIMethods.PressEscapeOrAnythingElse())
                 {
                     break;
                 }
@@ -48,7 +49,8 @@ public class Program
 
             points = Logic.CompareTheAnswers(randomeContent, userAnswer, points);
 
-            if (UIMethods.LeaveTheGame())
+            UIMethods.DesideToLeaveTheGameOrNot();
+            if (UIMethods.PressEscapeOrAnythingElse())
             {
                 UIMethods.DisplayGoodBuyMessage();
                 break;

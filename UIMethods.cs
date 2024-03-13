@@ -13,7 +13,7 @@
         }
         public static string WriteTheQuestions()
         {
-            Console.WriteLine("Please write a question (type 'done' to finish):");
+            Console.WriteLine("Please write a question: ");
             
             return Console.ReadLine();
         }
@@ -61,15 +61,6 @@
             Console.WriteLine("**********************");
             Console.WriteLine("\nOK then, Lets play !\n");
             Console.WriteLine("**********************");
-        }
-        public static bool LeaveTheGame()
-        {
-            Console.WriteLine("\nPress (ESCAPE) to leave the game or anything else to play!\n");
-            Console.WriteLine("************************************************************");
-            ConsoleKeyInfo keyInfo = Console.ReadKey();
-            {
-                return keyInfo.Key == ConsoleKey.Escape;
-            }
         }
         public static int ReadCorrectAnswerInput()
         {
@@ -119,6 +110,22 @@
         public static void DisplayGoodBuyMessage()
         {
             Console.WriteLine("oOK, Goodbuy!! See you next time!!");
+        }
+        public static void DesideToWriteMoreQnAOrNot()
+        {
+            Console.WriteLine("type (ESCAPE) to finish and play! Or anything else to enter more questions!");
+        }
+        public static void DesideToLeaveTheGameOrNot()
+        {
+            Console.WriteLine("\nPress (ESCAPE) to leave the game or anything else to play!\n");
+            Console.WriteLine("************************************************************");
+        }
+        public static bool PressEscapeOrAnythingElse()
+        {
+            ConsoleKeyInfo keyInfo = Console.ReadKey();
+            {
+                return keyInfo.Key == ConsoleKey.Escape;
+            }
         }
     }
 }

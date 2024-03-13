@@ -3,7 +3,6 @@ namespace QuizMaker
 {
     public static class Logic
     {
-        const string DONE = "done";
         const string PATH = "QuestionsandAnswers.xml";
 
         public static void SaveToHardDrive(List<QuestionsAndAnswers> QnAList, QuestionsAndAnswers questionandAnswers)
@@ -75,13 +74,6 @@ namespace QuizMaker
             }
             return true;
         }
-        public static bool DesideToWriteMoreQnAOrNot(QuestionsAndAnswers questionandAnswers)
-        {
-            if (questionandAnswers.Questions.ToLower() == DONE)
-            {
-               return true;
-            }
-            return false;
-        }
+       
     }
 }

@@ -26,7 +26,7 @@ public class Program
                 }
             }
 
-            Logic.SaveToHardDrive(QnAList, questionandAnswers);
+            Logic.SaveToHardDrive(QnAList);
         }
         UIMethods.DisplayMessageForPlay();
         int points = 0;

@@ -5,7 +5,7 @@ namespace QuizMaker
     {
         const string PATH = "qweQuestionsandAnswers.xml";
 
-        public static void SaveToHardDrive(List<QuestionsAndAnswers> QnAList, QuestionsAndAnswers questionandAnswers)
+        public static void SaveToHardDrive(List<QuestionsAndAnswers> QnAList)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
             using (FileStream file = File.Create(PATH))

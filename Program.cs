@@ -16,7 +16,7 @@ public class Program
             QnAList = Logic.LoadFromHardDrive(QnAList);
             while (true)
             {
-                    questionandAnswers = Logic.AddQnAToObject();
+                    questionandAnswers = UIMethods.AddQnAToObject();
                     QnAList.Add(questionandAnswers);
 
                 UIMethods.DesideToWriteMoreQnAOrNot();

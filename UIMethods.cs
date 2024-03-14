@@ -14,7 +14,7 @@
         public static string WriteTheQuestions()
         {
             Console.WriteLine("Please write a question: ");
-            
+
             return Console.ReadLine();
         }
         public static List<string> WriteTheAnswers()
@@ -126,6 +126,15 @@
             {
                 return keyInfo.Key == ConsoleKey.Escape;
             }
+        }
+        public static QuestionsAndAnswers AddQnAToObject()
+        {
+            QuestionsAndAnswers questionandAnswers = new QuestionsAndAnswers();
+
+            questionandAnswers.Questions = WriteTheQuestions();
+            questionandAnswers.Answers = WriteTheAnswers();
+            questionandAnswers.CorrectAnswer = ReadCorrectAnswerInput();
+            return questionandAnswers;
         }
     }
 }

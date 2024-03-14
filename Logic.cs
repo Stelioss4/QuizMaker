@@ -3,7 +3,7 @@ namespace QuizMaker
 {
     public static class Logic
     {
-        const string PATH = "QuestionsandAnswers.xml";
+        const string PATH = "qweQuestionsandAnswers.xml";
 
         public static void SaveToHardDrive(List<QuestionsAndAnswers> QnAList, QuestionsAndAnswers questionandAnswers)
         {
@@ -43,15 +43,7 @@ namespace QuizMaker
             randomeContent = QnAList[randomIndex];
             return randomeContent;
         }
-        public static QuestionsAndAnswers AddQnAToObject()
-        {
-            QuestionsAndAnswers questionandAnswers = new QuestionsAndAnswers();
-
-            questionandAnswers.Questions = UIMethods.WriteTheQuestions();
-            questionandAnswers.Answers = UIMethods.WriteTheAnswers();
-            questionandAnswers.CorrectAnswer = UIMethods.ReadCorrectAnswerInput();
-            return questionandAnswers;
-        }
+        
         public static int CompareTheAnswers(QuestionsAndAnswers randomQuestion, int userAnswer, int points)
         {
             if (randomQuestion.CorrectAnswer == userAnswer)

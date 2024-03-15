@@ -26,9 +26,7 @@ public class Program
 
         while (true)
         {
-            QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
-
-            randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
+            QuestionsAndAnswers randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
 
             UIMethods.OutputTheRandomQuestion(randomeContent);
 

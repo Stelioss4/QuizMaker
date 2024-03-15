@@ -5,7 +5,6 @@ namespace QuizMaker
     public static class Logic
     {
         const string PLAY = "play";
-        const string QUIT = "quit";
         const string ASK_QUESTIONS = "ask more questions";
         const string PATH = "asQuestionsandAnswers.xml";
 

@@ -6,7 +6,6 @@ public class Program
     {
         const string PLAY = "play";
         const string QUIT = "quit";
-        const string ASK_QUESTIONS = "ask more questions";
 
         UIMethods.DisplayWelcomeMessage();
 
@@ -17,16 +16,7 @@ public class Program
         QnAList = Logic.LoadFromHardDrive();
         if (UIMethods.AskToAddQuestions())
         {
-            while (true)
-            {
-                questionandAnswers = UIMethods.AddQnAToObject();
-                QnAList.Add(questionandAnswers);
-
-                if (UIMethods.PressEscapeOrAnythingElse(PLAY, ASK_QUESTIONS))
-                {
-                    break;
-                }
-            }
+            Logic.AddQnAInAList();
 
             Logic.SaveToHardDrive(QnAList);
         }

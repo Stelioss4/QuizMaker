@@ -1,8 +1,12 @@
-﻿using System.Xml.Serialization;
+﻿using System.Text;
+using System.Xml.Serialization;
 namespace QuizMaker
 {
     public static class Logic
     {
+        const string PLAY = "play";
+        const string QUIT = "quit";
+        const string ASK_QUESTIONS = "ask more questions";
         const string PATH = "asQuestionsandAnswers.xml";
 
         public static void SaveToHardDrive(List<QuestionsAndAnswers> QnAList)
@@ -58,6 +62,21 @@ namespace QuizMaker
                 return false;
             }
             return true;
+        }
+        public static void AddQnAInAList()
+        {
+            QuestionsAndAnswers questionandAnswers = new QuestionsAndAnswers();
+            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
+            while (true)
+            {
+                questionandAnswers = UIMethods.AddQnAToObject();
+                QnAList.Add(questionandAnswers);
+
+                if (UIMethods.PressEscapeOrAnythingElse(PLAY, ASK_QUESTIONS))
+                {
+                    break;
+                }
+            }
         }
     }
 }

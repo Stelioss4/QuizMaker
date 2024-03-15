@@ -46,7 +46,7 @@
                 }
             }
         }
-        public static bool AskToPlayOrAddQuestions()
+        public static bool AskToAddQuestions()
         {
             Console.WriteLine("\nPress (SPACE) to add more questionsANDanswers or anything else to play!");
             ConsoleKeyInfo keyInfo = Console.ReadKey();
@@ -135,6 +135,10 @@
             questionandAnswers.Answers = WriteTheAnswers();
             questionandAnswers.CorrectAnswer = ReadCorrectAnswerInput();
             return questionandAnswers;
+        }
+        public static void DisplayTotalPoints(int points)
+        {
+            Console.WriteLine($"your points are: {points}!!");
         }
     }
 }

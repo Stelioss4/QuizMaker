@@ -11,13 +11,13 @@ public class Program
         List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
         Random rng = new Random();
 
-        if (UIMethods.AskToPlayOrAddQuestions())
+        QnAList = Logic.LoadFromHardDrive();
+        if (UIMethods.AskToAddQuestions())
         {
-            QnAList = Logic.LoadFromHardDrive(QnAList);
             while (true)
             {
-                    questionandAnswers = UIMethods.AddQnAToObject();
-                    QnAList.Add(questionandAnswers);
+                questionandAnswers = UIMethods.AddQnAToObject();
+                QnAList.Add(questionandAnswers);
 
                 UIMethods.DesideToWriteMoreQnAOrNot();
                 if (UIMethods.PressEscapeOrAnythingElse())
@@ -29,12 +29,12 @@ public class Program
             Logic.SaveToHardDrive(QnAList);
         }
         UIMethods.DisplayMessageForPlay();
+
         int points = 0;
+
         while (true)
         {
             QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
-
-            QnAList = Logic.LoadFromHardDrive(QnAList);
 
             randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
 
@@ -47,9 +47,11 @@ public class Program
 
             int userAnswer = UIMethods.ReadCorrectAnswerInput();
 
-            points = Logic.CompareTheAnswers(randomeContent, userAnswer, points);
+            points = points + Logic.CompareTheAnswers(randomeContent, userAnswer);
+            UIMethods.DisplayTotalPoints(points);
 
             UIMethods.DesideToLeaveTheGameOrNot();
+
             if (UIMethods.PressEscapeOrAnythingElse())
             {
                 UIMethods.DisplayGoodBuyMessage();

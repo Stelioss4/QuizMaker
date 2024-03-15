@@ -3,7 +3,7 @@ namespace QuizMaker
 {
     public static class Logic
     {
-        const string PATH = "qweQuestionsandAnswers.xml";
+        const string PATH = "QuestionsandAnswers.xml";
 
         public static void SaveToHardDrive(List<QuestionsAndAnswers> QnAList)
         {
@@ -13,24 +13,22 @@ namespace QuizMaker
                 serializer.Serialize(file, QnAList);
             }
         }
-        public static List<QuestionsAndAnswers> LoadFromHardDrive(List<QuestionsAndAnswers> QnAList)
+        public static List<QuestionsAndAnswers> LoadFromHardDrive() //no parameter needed 
         {
-            while (true)
+            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>(); 
+            XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
+            try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
-                try
+                using (FileStream file = File.OpenRead(PATH))
                 {
-                    using (FileStream file = File.OpenRead(PATH))
-                    {
-                        QnAList = serializer.Deserialize(file) as List<QuestionsAndAnswers>;
-                    }
+                    QnAList = serializer.Deserialize(file) as List<QuestionsAndAnswers>;
                 }
-                catch (FileNotFoundException)
-                {
-                    QnAList = new List<QuestionsAndAnswers>();
-                }
-                return QnAList;
             }
+            catch (FileNotFoundException)
+            {
+                Exist(PATH);
+            }
+            return QnAList;
         }
         public static QuestionsAndAnswers MakeRandomQuestion(List<QuestionsAndAnswers> QnAList, Random rng)
         {
@@ -43,19 +41,19 @@ namespace QuizMaker
             randomeContent = QnAList[randomIndex];
             return randomeContent;
         }
-        
-        public static int CompareTheAnswers(QuestionsAndAnswers randomQuestion, int userAnswer, int points)
+
+        public static int CompareTheAnswers(QuestionsAndAnswers randomQuestion, int userAnswer)
         {
+            int points = 0;
             if (randomQuestion.CorrectAnswer == userAnswer)
             {
-                points++;
                 Console.WriteLine($"Perfect!! The correct answer is: {randomQuestion.CorrectAnswer}!!!\n");
+                points++;
             }
             else
             {
                 Console.WriteLine($"Sorry.. The correct answer is: {randomQuestion.CorrectAnswer}\n");
             }
-            Console.WriteLine($"your points are: {points}!!");
             return points;
         }
         public static bool ChekIfNoQnALoaded(QuestionsAndAnswers randomeContent)
@@ -66,6 +64,17 @@ namespace QuizMaker
             }
             return true;
         }
-       
+
+        public static bool Exist(string PATH)
+        {
+            if (File.Exists(PATH))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

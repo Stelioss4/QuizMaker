@@ -3,7 +3,7 @@ namespace QuizMaker
 {
     public static class Logic
     {
-        const string PATH = "QuestionsandAnswers.xml";
+        const string PATH = "asQuestionsandAnswers.xml";
 
         public static void SaveToHardDrive(List<QuestionsAndAnswers> QnAList)
         {
@@ -37,7 +37,6 @@ namespace QuizMaker
             QuestionsAndAnswers randomeContent = QnAList[randomIndex];
             return randomeContent;
         }
-
         public static int CompareTheAnswers(QuestionsAndAnswers randomQuestion, int userAnswer)
         {
             int points = 0;
@@ -59,18 +58,6 @@ namespace QuizMaker
                 return false;
             }
             return true;
-        }
-
-        public static bool Exist(string PATH)
-        {
-            if (File.Exists(PATH))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
     }
 }

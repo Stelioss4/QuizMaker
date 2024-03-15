@@ -4,6 +4,9 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        const string PLAY = "play";
+        const string QUIT = "quit";
+        const string ASK_QUESTIONS = "ask more questions";
 
         UIMethods.DisplayWelcomeMessage();
 
@@ -19,8 +22,7 @@ public class Program
                 questionandAnswers = UIMethods.AddQnAToObject();
                 QnAList.Add(questionandAnswers);
 
-                UIMethods.DesideToWriteMoreQnAOrNot();
-                if (UIMethods.PressEscapeOrAnythingElse())
+                if (UIMethods.PressEscapeOrAnythingElse(PLAY, ASK_QUESTIONS))
                 {
                     break;
                 }
@@ -50,9 +52,7 @@ public class Program
             points = points + Logic.CompareTheAnswers(randomeContent, userAnswer);
             UIMethods.DisplayTotalPoints(points);
 
-            UIMethods.DesideToLeaveTheGameOrNot();
-
-            if (UIMethods.PressEscapeOrAnythingElse())
+            if (UIMethods.PressEscapeOrAnythingElse(QUIT, PLAY))
             {
                 UIMethods.DisplayGoodBuyMessage();
                 break;

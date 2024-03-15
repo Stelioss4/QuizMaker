@@ -107,25 +107,12 @@
                 Console.WriteLine($"{numberOfAnswer++}: {answer}");
             }
         }
-        public static void DisplayGoodBuyMessage()
+        public static bool PressEscapeOrAnythingElse(string play, string quit)
         {
-            Console.WriteLine("oOK, Goodbuy!! See you next time!!");
-        }
-        public static void DesideToWriteMoreQnAOrNot()
-        {
-            Console.WriteLine("type (ESCAPE) to finish and play! Or anything else to enter more questions!");
-        }
-        public static void DesideToLeaveTheGameOrNot()
-        {
-            Console.WriteLine("\nPress (ESCAPE) to leave the game or anything else to play!\n");
+            Console.WriteLine($"type (ESCAPE) to {play} or anything else to {quit}. . .");
             Console.WriteLine("************************************************************");
-        }
-        public static bool PressEscapeOrAnythingElse()
-        {
             ConsoleKeyInfo keyInfo = Console.ReadKey();
-            {
-                return keyInfo.Key == ConsoleKey.Escape;
-            }
+            return keyInfo.Key == ConsoleKey.Escape;
         }
         public static QuestionsAndAnswers AddQnAToObject()
         {
@@ -139,6 +126,10 @@
         public static void DisplayTotalPoints(int points)
         {
             Console.WriteLine($"your points are: {points}!!");
+        }
+        public static void DisplayGoodBuyMessage()
+        {
+            Console.WriteLine("oOK, Goodbuy!! See you next time!!");
         }
     }
 }

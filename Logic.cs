@@ -32,13 +32,12 @@ namespace QuizMaker
         }
         public static QuestionsAndAnswers MakeRandomQuestion(List<QuestionsAndAnswers> QnAList, Random rng)
         {
-            QuestionsAndAnswers randomeContent = new QuestionsAndAnswers();
             if (QnAList.Count == 0)
             {
                 return null;
             }
             int randomIndex = rng.Next(0, QnAList.Count);
-            randomeContent = QnAList[randomIndex];
+            QuestionsAndAnswers randomeContent = QnAList[randomIndex];
             return randomeContent;
         }
 

@@ -13,20 +13,17 @@ namespace QuizMaker
                 serializer.Serialize(file, QnAList);
             }
         }
-        public static List<QuestionsAndAnswers> LoadFromHardDrive() //no parameter needed 
+        public static List<QuestionsAndAnswers> LoadFromHardDrive() 
         {
             List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>(); 
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
-            try
+
+            if (File.Exists(PATH))
             {
                 using (FileStream file = File.OpenRead(PATH))
                 {
                     QnAList = serializer.Deserialize(file) as List<QuestionsAndAnswers>;
                 }
-            }
-            catch (FileNotFoundException)
-            {
-                Exist(PATH);
             }
             return QnAList;
         }

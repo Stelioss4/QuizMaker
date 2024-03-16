@@ -4,9 +4,10 @@ namespace QuizMaker
 {
     public static class Logic
     {
+        const string QUIT = "quit";
         const string PLAY = "play";
         const string ASK_QUESTIONS = "ask more questions";
-        const string PATH = "asQuestionsandAnswers.xml";
+        const string PATH = "QuestionsandAnswers.xml";
 
         public static void SaveToHardDrive(List<QuestionsAndAnswers> QnAList)
         {
@@ -16,9 +17,9 @@ namespace QuizMaker
                 serializer.Serialize(file, QnAList);
             }
         }
-        public static List<QuestionsAndAnswers> LoadFromHardDrive() 
+        public static List<QuestionsAndAnswers> LoadFromHardDrive()
         {
-            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>(); 
+            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
 
             if (File.Exists(PATH))
@@ -75,6 +76,47 @@ namespace QuizMaker
                 {
                     break;
                 }
+            }
+        }
+
+        public static void PlayTheQuiz()
+        {
+            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
+            Random rng = new Random();
+            int points = 0;
+            while (true)
+            {
+                QuestionsAndAnswers randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
+
+                UIMethods.OutputTheRandomQuestion(randomeContent);
+
+                if (!File.Exists(PATH))//Logic.ChekIfNoQnALoaded(randomeContent) == false)
+                {
+                    break;
+                }
+
+                int userAnswer = UIMethods.ReadCorrectAnswerInput();
+
+                points = points + Logic.CompareTheAnswers(randomeContent, userAnswer);
+                UIMethods.DisplayTotalPoints(points);
+
+                if (UIMethods.PressEscapeOrAnythingElse(QUIT, PLAY))
+                {
+                    UIMethods.DisplayGoodBuyMessage();
+                    break;
+                }
+            }
+        }
+        public static void LoadAndAddQnA()
+        {
+            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
+
+            QnAList = Logic.LoadFromHardDrive();
+            if (UIMethods.AskToAddQuestions())
+            {
+                Logic.AddQnAInAList();
+
+                Logic.SaveToHardDrive(QnAList);
             }
         }
     }

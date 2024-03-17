@@ -71,7 +71,7 @@ namespace QuizMaker
                 QuestionsAndAnswers questionandAnswers = UIMethods.AddQnAToObject();
                 QnAList.Add(questionandAnswers);
 
-                if (UIMethods.PressEscapeOrAnythingElse(PLAY, ASK_QUESTIONS))
+                if (UIMethods.PressSpacebarOrAnythingElse(PLAY, ASK_QUESTIONS))
                 {
                     break;
                 }
@@ -100,7 +100,7 @@ namespace QuizMaker
                 points = points + Logic.CompareTheAnswers(randomeContent, userAnswer);
                 UIMethods.DisplayTotalPoints(points);
 
-                if (UIMethods.PressEscapeOrAnythingElse(QUIT, PLAY))
+                if (UIMethods.PressSpacebarOrAnythingElse(QUIT, PLAY))
                 {
                     UIMethods.DisplayGoodBuyMessage();
                     break;

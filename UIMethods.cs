@@ -56,7 +56,9 @@
         }
         public static void DisplayMessageForPlay()
         {
-            Console.WriteLine("oOK then, Lets play! !");
+            Console.Clear();
+            Console.WriteLine("**********************\n");
+            Console.WriteLine("OK then, Lets play! !");
             Console.WriteLine("**********************\n");
         }
         public static int ReadCorrectAnswerInput()
@@ -104,12 +106,12 @@
                 Console.WriteLine($"{numberOfAnswer++}: {answer}");
             }
         }
-        public static bool PressEscapeOrAnythingElse(string play, string quit)
+        public static bool PressSpacebarOrAnythingElse(string play, string quit)
         {
-            Console.WriteLine($"Press (ESCAPE) to {play} or anything else to {quit}. . .");
+            Console.WriteLine($"Press (SPACE) to {play} or anything else to {quit}. . .");
             Console.WriteLine("************************************************************");
             ConsoleKeyInfo keyInfo = Console.ReadKey();
-            return keyInfo.Key == ConsoleKey.Escape;
+            return keyInfo.Key == ConsoleKey.Spacebar;
         }
         public static QuestionsAndAnswers AddQnAToObject()
         {
@@ -126,7 +128,7 @@
         }
         public static void DisplayGoodBuyMessage()
         {
-            Console.WriteLine("oOK, Goodbuy!! See you next time!!");
+            Console.WriteLine("OK, Goodbuy!! See you next time!!");
         }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using QuizMaker;
-using System.Collections.Generic;
-
 public class Program
 {
     public static void Main(string[] args)
@@ -10,6 +8,5 @@ public class Program
         List<QuestionsAndAnswers> QnAList = Logic.LoadAndAddQnA();
 
         Logic.PlayTheQuiz(QnAList);
-        
     }
 }

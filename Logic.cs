@@ -1,5 +1,4 @@
-﻿using System.Text;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 namespace QuizMaker
 {
     public static class Logic

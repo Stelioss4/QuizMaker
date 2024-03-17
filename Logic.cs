@@ -55,14 +55,6 @@ namespace QuizMaker
             }
             return points;
         }
-        public static bool ChekIfNoQnALoaded(QuestionsAndAnswers randomeContent)
-        {
-            if (randomeContent == null || randomeContent.Answers == null || randomeContent.Answers.Count == 0)
-            {
-                return false;
-            }
-            return true;
-        }
         public static List<QuestionsAndAnswers> AddQnAInAList(List<QuestionsAndAnswers> QnAList)
         {
           
@@ -78,7 +70,6 @@ namespace QuizMaker
             }
             return QnAList;
         }
-
         public static void PlayTheQuiz(List<QuestionsAndAnswers> QnAList)
         {
             Random rng = new Random();

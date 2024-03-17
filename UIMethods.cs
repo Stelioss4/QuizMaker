@@ -13,6 +13,7 @@
         }
         public static string WriteTheQuestions()
         {
+            Console.Clear();
             Console.WriteLine("Please write a question: ");
 
             return Console.ReadLine();
@@ -57,7 +58,7 @@
         public static void DisplayMessageForPlay()
         {
             Console.Clear();
-            Console.WriteLine("**********************\n");
+            Console.WriteLine("**********************");
             Console.WriteLine("OK then, Lets play! !");
             Console.WriteLine("**********************\n");
         }
@@ -109,7 +110,7 @@
         public static bool PressSpacebarOrAnythingElse(string play, string quit)
         {
             Console.WriteLine($"Press (SPACE) to {play} or anything else to {quit}. . .");
-            Console.WriteLine("************************************************************");
+            Console.WriteLine("********************************************************");
             ConsoleKeyInfo keyInfo = Console.ReadKey();
             return keyInfo.Key == ConsoleKey.Spacebar;
         }
@@ -128,6 +129,7 @@
         }
         public static void DisplayGoodBuyMessage()
         {
+            Console.Clear();
             Console.WriteLine("OK, Goodbuy!! See you next time!!");
         }
     }

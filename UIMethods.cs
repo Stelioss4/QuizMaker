@@ -110,7 +110,7 @@
         public static bool PressSpacebarOrAnythingElse(string play, string quit)
         {
             Console.WriteLine($"Press (SPACE) to {play} or anything else to {quit}. . .");
-            Console.WriteLine("********************************************************");
+            Console.WriteLine("********************************************************\n");
             ConsoleKeyInfo keyInfo = Console.ReadKey();
             return keyInfo.Key == ConsoleKey.Spacebar;
         }

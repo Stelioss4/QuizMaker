@@ -29,7 +29,7 @@
             }
             return answers;
         }
-        public static int GiveTheCorrectAnswer()
+        public static int ReadTheCorrectAnswer()
         {
             Console.WriteLine("choose 1, 2, 3, 4 for the correct answer");
             while (true)
@@ -38,6 +38,7 @@
                 if (int.TryParse(Console.ReadLine(), out CorrectAnswer) && CorrectAnswer < ANSWER_COUNT_HELP_HIGH)
 
                 {
+                    Console.Clear();
                     return CorrectAnswer;
                 }
                 else
@@ -48,19 +49,15 @@
         }
         public static bool AskToAddQuestions()
         {
-            Console.WriteLine("\nPress (SPACE) to add more questionsANDanswers or anything else to play!");
+            Console.WriteLine("\nPress (ENTER) to add more questionsANDanswers or anything else to play!");
+
             ConsoleKeyInfo keyInfo = Console.ReadKey();
-            Console.Clear();
-            {
-                return keyInfo.Key == ConsoleKey.Spacebar;
-            }
+            return keyInfo.Key == ConsoleKey.Enter;
         }
         public static void DisplayMessageForPlay()
         {
-            Console.Clear();
-            Console.WriteLine("**********************");
-            Console.WriteLine("\nOK then, Lets play !\n");
-            Console.WriteLine("**********************");
+            Console.WriteLine("oOK then, Lets play! !");
+            Console.WriteLine("**********************\n");
         }
         public static int ReadCorrectAnswerInput()
         {
@@ -109,7 +106,7 @@
         }
         public static bool PressEscapeOrAnythingElse(string play, string quit)
         {
-            Console.WriteLine($"type (ESCAPE) to {play} or anything else to {quit}. . .");
+            Console.WriteLine($"Press (ESCAPE) to {play} or anything else to {quit}. . .");
             Console.WriteLine("************************************************************");
             ConsoleKeyInfo keyInfo = Console.ReadKey();
             return keyInfo.Key == ConsoleKey.Escape;
@@ -120,7 +117,7 @@
 
             questionandAnswers.Questions = WriteTheQuestions();
             questionandAnswers.Answers = WriteTheAnswers();
-            questionandAnswers.CorrectAnswer = ReadCorrectAnswerInput();
+            questionandAnswers.CorrectAnswer = ReadTheCorrectAnswer();
             return questionandAnswers;
         }
         public static void DisplayTotalPoints(int points)

@@ -63,13 +63,12 @@ namespace QuizMaker
             }
             return true;
         }
-        public static void AddQnAInAList()
+        public static List<QuestionsAndAnswers> AddQnAInAList(List<QuestionsAndAnswers> QnAList)
         {
-            QuestionsAndAnswers questionandAnswers = new QuestionsAndAnswers();
-            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
+          
             while (true)
             {
-                questionandAnswers = UIMethods.AddQnAToObject();
+                QuestionsAndAnswers questionandAnswers = UIMethods.AddQnAToObject();
                 QnAList.Add(questionandAnswers);
 
                 if (UIMethods.PressEscapeOrAnythingElse(PLAY, ASK_QUESTIONS))
@@ -77,20 +76,21 @@ namespace QuizMaker
                     break;
                 }
             }
+            return QnAList;
         }
 
-        public static void PlayTheQuiz()
+        public static void PlayTheQuiz(List<QuestionsAndAnswers> QnAList)
         {
-            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
             Random rng = new Random();
             int points = 0;
+            UIMethods.DisplayMessageForPlay();
             while (true)
             {
                 QuestionsAndAnswers randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
 
                 UIMethods.OutputTheRandomQuestion(randomeContent);
 
-                if (!File.Exists(PATH))//Logic.ChekIfNoQnALoaded(randomeContent) == false)
+                if (!File.Exists(PATH))
                 {
                     break;
                 }
@@ -107,17 +107,18 @@ namespace QuizMaker
                 }
             }
         }
-        public static void LoadAndAddQnA()
+        public static List<QuestionsAndAnswers> LoadAndAddQnA()
         {
-            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
+            
 
-            QnAList = Logic.LoadFromHardDrive();
+            List<QuestionsAndAnswers> QnAList = Logic.LoadFromHardDrive();
             if (UIMethods.AskToAddQuestions())
             {
-                Logic.AddQnAInAList();
+               QnAList = Logic.AddQnAInAList(QnAList);
 
                 Logic.SaveToHardDrive(QnAList);
             }
+            return QnAList;
         }
     }
 }

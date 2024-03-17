@@ -1,5 +1,5 @@
 ﻿using QuizMaker;
-using System.IO;
+using System.Collections.Generic;
 
 public class Program
 {
@@ -7,10 +7,9 @@ public class Program
     {
         UIMethods.DisplayWelcomeMessage();
 
-        Logic.LoadAndAddQnA();
-       
-        UIMethods.DisplayMessageForPlay();
+        List<QuestionsAndAnswers> QnAList = Logic.LoadAndAddQnA();
 
-        Logic.PlayTheQuiz();
+        Logic.PlayTheQuiz(QnAList);
+        
     }
 }

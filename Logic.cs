@@ -7,6 +7,7 @@ namespace QuizMaker
         const string PLAY = "play";
         const string ASK_QUESTIONS = "ask more questions";
         const string PATH = "QuestionsandAnswers.xml";
+        const int ANSWER_COUNT_HELP_LOW = 1;
 
         public static void SaveToHardDrive(List<QuestionsAndAnswers> QnAList)
         {
@@ -40,17 +41,18 @@ namespace QuizMaker
             QuestionsAndAnswers randomeContent = QnAList[randomIndex];
             return randomeContent;
         }
-        public static int CompareTheAnswers(QuestionsAndAnswers randomQuestion, int userAnswer)
+        public static int CompareTheAnswers(QuestionsAndAnswers randomeContent, int userAnswer)
         {
             int points = 0;
-            if (randomQuestion.CorrectAnswer == userAnswer)
+            if (randomeContent.CorrectAnswer == userAnswer)
             {
-                Console.WriteLine($"Perfect!! The correct answer is: {randomQuestion.CorrectAnswer}!!!\n");
+                Console.WriteLine($"Perfect!! The correct answer is number {randomeContent.CorrectAnswer}: {randomeContent.Answers[randomeContent.CorrectAnswer - ANSWER_COUNT_HELP_LOW]}!!!\n");
                 points++;
             }
             else
             {
-                Console.WriteLine($"Sorry.. The correct answer is: {randomQuestion.CorrectAnswer}\n");
+                
+                Console.WriteLine($"Sorry.. The correct answer is number {randomeContent.CorrectAnswer}: {randomeContent.Answers[randomeContent.CorrectAnswer - ANSWER_COUNT_HELP_LOW]}\n");
             }
             return points;
         }

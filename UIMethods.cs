@@ -125,7 +125,7 @@
         }
         public static void DisplayTotalPoints(int points)
         {
-            Console.WriteLine($"your points are: {points}!!");
+            Console.WriteLine($"your points are: {points}!!\n");
         }
         public static void DisplayGoodBuyMessage()
         {

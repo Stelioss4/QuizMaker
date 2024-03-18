@@ -5,8 +5,8 @@ public class Program
     {
         UIMethods.DisplayWelcomeMessage();
 
-        List<QuestionsAndAnswers> QnAList = Logic.LoadAndAddQnA();
+        List<QuestionsAndAnswers> QnAList = UIMethods.LoadAndAddQnA();
 
-        Logic.PlayTheQuiz(QnAList);
+        UIMethods.PlayTheQuiz(QnAList);
     }
 }

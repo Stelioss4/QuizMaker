@@ -1,4 +1,6 @@
-﻿namespace QuizMaker
+﻿using System.IO;
+
+namespace QuizMaker
 {
     public static class UIMethods
     {
@@ -6,6 +8,11 @@
         const int ANSWER_COUNT_HELP_LOW = 1;
         const int ANSWER_COUNT_HELP_HIGH = 5;
         const int UPPER_ANSWER_LIMMIT = 4;
+        const string PATH = "QuestionsandAnswers.xml";
+        const string QUIT = "quit";
+        const string PLAY = "play";
+        const string ASK_QUESTIONS = "ask more questions";
+
 
         public static void DisplayWelcomeMessage()
         {
@@ -55,6 +62,7 @@
             ConsoleKeyInfo keyInfo = Console.ReadKey();
             return keyInfo.Key == ConsoleKey.Enter;
         }
+
         public static void DisplayMessageForPlay()
         {
             Console.Clear();
@@ -131,6 +139,75 @@
         {
             Console.Clear();
             Console.WriteLine("OK, Goodbuy!! See you next time!!");
+        }
+        public static void PlayTheQuiz(List<QuestionsAndAnswers> QnAList)
+        {
+            Random rng = new Random();
+            int points = 0;
+            DisplayMessageForPlay();
+            while (true)
+            {
+                QuestionsAndAnswers randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
+
+                OutputTheRandomQuestion(randomeContent);
+
+                if (!File.Exists(PATH))
+                {
+                    break;
+                }
+
+                int userAnswer = ReadCorrectAnswerInput();
+
+                points = points + CompareTheAnswers(randomeContent, userAnswer);
+                DisplayTotalPoints(points);
+
+                if (PressSpacebarOrAnythingElse(QUIT, PLAY))
+                {
+                    DisplayGoodBuyMessage();
+                    break;
+                }
+            }
+        }
+        public static List<QuestionsAndAnswers> AddQnAInAList(List<QuestionsAndAnswers> QnAList)
+        {
+
+            while (true)
+            {
+                QuestionsAndAnswers questionandAnswers = AddQnAToObject();
+                QnAList.Add(questionandAnswers);
+
+                if (PressSpacebarOrAnythingElse(PLAY, ASK_QUESTIONS))
+                {
+                    break;
+                }
+            }
+            return QnAList;
+        }
+        public static List<QuestionsAndAnswers> LoadAndAddQnA()
+        {
+            List<QuestionsAndAnswers> QnAList = Logic.LoadFromHardDrive();
+            if (AskToAddQuestions())
+            {
+                QnAList = AddQnAInAList(QnAList);
+
+                Logic.SaveToHardDrive(QnAList);
+            }
+            return QnAList;
+        }
+        public static int CompareTheAnswers(QuestionsAndAnswers randomeContent, int userAnswer)
+        {
+            int points = 0;
+            if (randomeContent.CorrectAnswer == userAnswer)
+            {
+                Console.WriteLine($"Perfect!! The correct answer is number {randomeContent.CorrectAnswer}: {randomeContent.Answers[randomeContent.CorrectAnswer - ANSWER_COUNT_HELP_LOW]}!!!\n");
+                points++;
+            }
+            else
+            {
+
+                Console.WriteLine($"Sorry.. The correct answer is number {randomeContent.CorrectAnswer}: {randomeContent.Answers[randomeContent.CorrectAnswer - ANSWER_COUNT_HELP_LOW]}\n");
+            }
+            return points;
         }
     }
 }

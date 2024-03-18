@@ -101,14 +101,12 @@ namespace QuizMaker
         }
         public static List<QuestionsAndAnswers> LoadAndAddQnA()
         {
-            
-
-            List<QuestionsAndAnswers> QnAList = Logic.LoadFromHardDrive();
+            List<QuestionsAndAnswers> QnAList = LoadFromHardDrive();
             if (UIMethods.AskToAddQuestions())
             {
-               QnAList = Logic.AddQnAInAList(QnAList);
+               QnAList = AddQnAInAList(QnAList);
 
-                Logic.SaveToHardDrive(QnAList);
+                SaveToHardDrive(QnAList);
             }
             return QnAList;
         }

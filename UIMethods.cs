@@ -164,16 +164,21 @@
             return QnAList;
         }
 
-        public static List<QuestionsAndAnswers> LoadAndAddQnA()
+        public static List<QuestionsAndAnswers> LoadQnA()
         {
             List<QuestionsAndAnswers> QnAList = Logic.LoadFromHardDrive();
+
+            return QnAList;
+        }
+
+        public static void AddQnA()
+        {
             if (AskToAddQuestions())
             {
+                List<QuestionsAndAnswers> QnAList = LoadQnA();
                 QnAList = AddQnAInAList(QnAList);
-
                 Logic.SaveToHardDrive(QnAList);
             }
-            return QnAList;
         }
 
         public static int CompareTheAnswers(QuestionsAndAnswers randomeContent, int userAnswer)

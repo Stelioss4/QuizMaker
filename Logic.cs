@@ -41,3 +41,13 @@ namespace QuizMaker
         }
     }
 }
+//if (int.TryParse(Console.ReadLine(), out CorrectAnswer) && CorrectAnswer < ANSWER_COUNT_HELP_HIGH)
+
+//{
+//    Console.Clear();
+//    return CorrectAnswer;
+//}
+//else
+//{
+//    Console.WriteLine("Invalid input. Please enter a number between 1 and 4.");
+//}

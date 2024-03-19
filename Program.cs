@@ -12,7 +12,9 @@ public class Program
 
         UIMethods.DisplayWelcomeMessage();
 
-        List<QuestionsAndAnswers> QnAList = UIMethods.LoadAndAddQnA();
+        List<QuestionsAndAnswers> QnAList = UIMethods.LoadQnA();
+
+        UIMethods.AddQnA();
 
         UIMethods.DisplayMessageForPlay();
 

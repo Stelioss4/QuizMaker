@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace QuizMaker
+﻿namespace QuizMaker
 {
     public static class UIMethods
     {
@@ -8,24 +6,25 @@ namespace QuizMaker
         const int ANSWER_COUNT_HELP_LOW = 1;
         const int ANSWER_COUNT_HELP_HIGH = 5;
         const int UPPER_ANSWER_LIMMIT = 4;
-        const string PATH = "QuestionsandAnswers.xml";
-        const string QUIT = "quit";
         const string PLAY = "play";
         const string ASK_QUESTIONS = "ask more questions";
+
 
 
         public static void DisplayWelcomeMessage()
         {
             Console.WriteLine("HELLO! WELCOME ON QUIZ MAKER");
         }
-        public static string WriteTheQuestions()
+
+        public static string ReadTheQuestions()
         {
             Console.Clear();
             Console.WriteLine("Please write a question: ");
 
             return Console.ReadLine();
         }
-        public static List<string> WriteTheAnswers()
+
+        public static List<string> ReadTheAnswers()
         {
             Console.WriteLine("Please write four additional answers for the question!");
             List<string> answers = new List<string>();
@@ -37,6 +36,7 @@ namespace QuizMaker
             }
             return answers;
         }
+
         public static int ReadTheCorrectAnswer()
         {
             Console.WriteLine("choose 1, 2, 3, 4 for the correct answer");
@@ -55,6 +55,7 @@ namespace QuizMaker
                 }
             }
         }
+
         public static bool AskToAddQuestions()
         {
             Console.WriteLine("\nPress (ENTER) to add more questionsANDanswers or anything else to play!");
@@ -70,6 +71,7 @@ namespace QuizMaker
             Console.WriteLine("OK then, Lets play! !");
             Console.WriteLine("**********************\n");
         }
+
         public static int ReadCorrectAnswerInput()
         {
             Console.WriteLine("Please choose one of the answers (1, 2, 3, or 4):");
@@ -93,7 +95,8 @@ namespace QuizMaker
                 }
             }
         }
-        public static void OutputTheRandomQuestion(QuestionsAndAnswers randomContent)
+
+        public static void OutputQnA(QuestionsAndAnswers randomContent)
         {
             if (randomContent == null)
             {
@@ -115,74 +118,52 @@ namespace QuizMaker
                 Console.WriteLine($"{numberOfAnswer++}: {answer}");
             }
         }
-        public static bool PressSpacebarOrAnythingElse(string play, string quit)
+
+        public static bool AskToContinueOrQuit(string play, string quit)
         {
             Console.WriteLine($"Press (SPACE) to {play} or anything else to {quit}. . .");
             Console.WriteLine("********************************************************\n");
             ConsoleKeyInfo keyInfo = Console.ReadKey();
             return keyInfo.Key == ConsoleKey.Spacebar;
         }
-        public static QuestionsAndAnswers AddQnAToObject()
+
+        public static QuestionsAndAnswers ReadQnA()
         {
             QuestionsAndAnswers questionandAnswers = new QuestionsAndAnswers();
 
-            questionandAnswers.Questions = WriteTheQuestions();
-            questionandAnswers.Answers = WriteTheAnswers();
+            questionandAnswers.Questions = ReadTheQuestions();
+            questionandAnswers.Answers = ReadTheAnswers();
             questionandAnswers.CorrectAnswer = ReadTheCorrectAnswer();
             return questionandAnswers;
         }
+
         public static void DisplayTotalPoints(int points)
         {
             Console.WriteLine($"your points are: {points}!!\n");
         }
+
         public static void DisplayGoodBuyMessage()
         {
             Console.Clear();
             Console.WriteLine("OK, Goodbuy!! See you next time!!");
         }
-        public static void PlayTheQuiz(List<QuestionsAndAnswers> QnAList)
-        {
-            Random rng = new Random();
-            int points = 0;
-            DisplayMessageForPlay();
-            while (true)
-            {
-                QuestionsAndAnswers randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
 
-                OutputTheRandomQuestion(randomeContent);
-
-                if (!File.Exists(PATH))
-                {
-                    break;
-                }
-
-                int userAnswer = ReadCorrectAnswerInput();
-
-                points = points + CompareTheAnswers(randomeContent, userAnswer);
-                DisplayTotalPoints(points);
-
-                if (PressSpacebarOrAnythingElse(QUIT, PLAY))
-                {
-                    DisplayGoodBuyMessage();
-                    break;
-                }
-            }
-        }
         public static List<QuestionsAndAnswers> AddQnAInAList(List<QuestionsAndAnswers> QnAList)
         {
 
             while (true)
             {
-                QuestionsAndAnswers questionandAnswers = AddQnAToObject();
+                QuestionsAndAnswers questionandAnswers = ReadQnA();
                 QnAList.Add(questionandAnswers);
 
-                if (PressSpacebarOrAnythingElse(PLAY, ASK_QUESTIONS))
+                if (AskToContinueOrQuit(PLAY, ASK_QUESTIONS))
                 {
                     break;
                 }
             }
             return QnAList;
         }
+
         public static List<QuestionsAndAnswers> LoadAndAddQnA()
         {
             List<QuestionsAndAnswers> QnAList = Logic.LoadFromHardDrive();
@@ -194,6 +175,7 @@ namespace QuizMaker
             }
             return QnAList;
         }
+
         public static int CompareTheAnswers(QuestionsAndAnswers randomeContent, int userAnswer)
         {
             int points = 0;

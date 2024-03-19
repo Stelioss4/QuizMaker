@@ -13,6 +13,7 @@ namespace QuizMaker
                 serializer.Serialize(file, QnAList);
             }
         }
+
         public static List<QuestionsAndAnswers> LoadFromHardDrive()
         {
             List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
@@ -27,6 +28,7 @@ namespace QuizMaker
             }
             return QnAList;
         }
+
         public static QuestionsAndAnswers MakeRandomQuestion(List<QuestionsAndAnswers> QnAList, Random rng)
         {
             if (QnAList.Count == 0)

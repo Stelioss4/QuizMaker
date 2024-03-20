@@ -9,8 +9,6 @@
         const string PLAY = "play";
         const string ASK_QUESTIONS = "ask more questions";
 
-
-
         public static void DisplayWelcomeMessage()
         {
             Console.WriteLine("HELLO! WELCOME ON QUIZ MAKER");
@@ -100,7 +98,9 @@
         {
             if (randomContent == null)
             {
-                Console.WriteLine("Sorry, no question available.");
+                DisplayEmptyQnAMessage();
+                DisplayGoodBuyMessage();
+                Environment.Exit(0);
                 return;
             }
 
@@ -144,8 +144,7 @@
 
         public static void DisplayGoodBuyMessage()
         {
-            Console.Clear();
-            Console.WriteLine("OK, Goodbuy!! See you next time!!");
+            Console.WriteLine("Goodbuy then!! See you next time!!");
         }
 
         public static List<QuestionsAndAnswers> AddQnAInAList(List<QuestionsAndAnswers> QnAList)
@@ -164,18 +163,10 @@
             return QnAList;
         }
 
-        public static List<QuestionsAndAnswers> LoadQnA()
-        {
-            List<QuestionsAndAnswers> QnAList = Logic.LoadFromHardDrive();
-
-            return QnAList;
-        }
-
-        public static void AddQnA()
+        public static void AddQnA(List<QuestionsAndAnswers> QnAList)
         {
             if (AskToAddQuestions())
             {
-                List<QuestionsAndAnswers> QnAList = LoadQnA();
                 QnAList = AddQnAInAList(QnAList);
                 Logic.SaveToHardDrive(QnAList);
             }
@@ -195,6 +186,12 @@
                 Console.WriteLine($"Sorry.. The correct answer is number {randomeContent.CorrectAnswer}: {randomeContent.Answers[randomeContent.CorrectAnswer - ANSWER_COUNT_HELP_LOW]}\n");
             }
             return points;
+        }
+
+        public static void DisplayEmptyQnAMessage()
+        {
+            Console.Clear();
+            Console.WriteLine("Sorry, no question available. Please restart the program and follow the instructions to add some QnA content.");
         }
     }
 }

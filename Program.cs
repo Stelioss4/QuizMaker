@@ -1,5 +1,4 @@
 ﻿using QuizMaker;
-using System.IO;
 public class Program
 {
     public static void Main(string[] args)
@@ -12,24 +11,23 @@ public class Program
 
         UIMethods.DisplayWelcomeMessage();
 
-        List<QuestionsAndAnswers> QnAList = UIMethods.LoadQnA();
+        List<QuestionsAndAnswers> QnAList = Logic.LoadFromHardDrive();
 
-        UIMethods.AddQnA();
+        UIMethods.AddQnA(QnAList);
 
         UIMethods.DisplayMessageForPlay();
 
+        QuestionsAndAnswers randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
+
         int points = 0;
 
-        while (true)
+        do
         {
-            QuestionsAndAnswers randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
-
-            UIMethods.OutputQnA(randomeContent);
-
             if (!File.Exists(PATH))
             {
                 break;
             }
+            UIMethods.OutputQnA(randomeContent);
 
             int userAnswer = UIMethods.ReadCorrectAnswerInput();
 
@@ -42,5 +40,6 @@ public class Program
                 break;
             }
         }
+        while (randomeContent != null);
     }
 }

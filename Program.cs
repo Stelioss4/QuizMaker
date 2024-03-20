@@ -26,6 +26,8 @@ public class Program
 
             if (!File.Exists(PATH))
             {
+                UIMethods.DisplayEmptyQnAMessage();
+                UIMethods.DisplayGoodBuyMessage();
                 break;
             }
             UIMethods.OutputQnA(randomeContent);

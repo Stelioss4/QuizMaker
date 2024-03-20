@@ -172,18 +172,23 @@
             }
         }
 
-        public static int CompareTheAnswers(QuestionsAndAnswers randomeContent, int userAnswer)
+        public static int CompareTheAnswers(QuestionsAndAnswers randomContent, int userAnswer)
         {
             int points = 0;
-            if (randomeContent.CorrectAnswer == userAnswer)
+
+            if (randomContent == null)
             {
-                Console.WriteLine($"Perfect!! The correct answer is number {randomeContent.CorrectAnswer}: {randomeContent.Answers[randomeContent.CorrectAnswer - ANSWER_COUNT_HELP_LOW]}!!!\n");
+                DisplayEmptyQnAMessage();
+                return 0;
+            }
+            if (randomContent.CorrectAnswer == userAnswer)
+            {
+                Console.WriteLine($"Perfect!! The correct answer is number {randomContent.CorrectAnswer}: {randomContent.Answers[randomContent.CorrectAnswer - ANSWER_COUNT_HELP_LOW]}!!!\n");
                 points++;
             }
             else
             {
-
-                Console.WriteLine($"Sorry.. The correct answer is number {randomeContent.CorrectAnswer}: {randomeContent.Answers[randomeContent.CorrectAnswer - ANSWER_COUNT_HELP_LOW]}\n");
+                Console.WriteLine($"Sorry.. The correct answer is number {randomContent.CorrectAnswer}: {randomContent.Answers[randomContent.CorrectAnswer - ANSWER_COUNT_HELP_LOW]}\n");
             }
             return points;
         }

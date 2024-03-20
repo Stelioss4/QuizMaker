@@ -17,12 +17,13 @@ public class Program
 
         UIMethods.DisplayMessageForPlay();
 
-        QuestionsAndAnswers randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
 
         int points = 0;
 
         do
         {
+            QuestionsAndAnswers randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
+
             if (!File.Exists(PATH))
             {
                 break;
@@ -40,6 +41,6 @@ public class Program
                 break;
             }
         }
-        while (randomeContent != null);
+        while (QnAList != null);
     }
 }

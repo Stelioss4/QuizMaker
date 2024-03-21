@@ -98,9 +98,6 @@
         {
             if (randomContent == null)
             {
-                DisplayEmptyQnAMessage();
-                DisplayGoodBuyMessage();
-                Environment.Exit(0);
                 return;
             }
 

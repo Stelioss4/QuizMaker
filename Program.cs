@@ -17,19 +17,20 @@ public class Program
 
         UIMethods.DisplayMessageForPlay();
 
-
+        
         int points = 0;
 
         do
         {
             QuestionsAndAnswers randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
 
-            if (!File.Exists(PATH))
+            if (randomeContent == null || !File.Exists(PATH))
             {
                 UIMethods.DisplayEmptyQnAMessage();
                 UIMethods.DisplayGoodBuyMessage();
                 break;
             }
+
             UIMethods.OutputQnA(randomeContent);
 
             int userAnswer = UIMethods.ReadCorrectAnswerInput();

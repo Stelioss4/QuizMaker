@@ -17,25 +17,24 @@ public class Program
 
         UIMethods.DisplayMessageForPlay();
 
-        
         int points = 0;
 
         do
         {
-            QuestionsAndAnswers randomeContent = Logic.MakeRandomQuestion(QnAList, rng);
+            QuestionsAndAnswers randomContent = Logic.MakeRandomQuestion(QnAList, rng);
 
-            if (randomeContent == null || !File.Exists(PATH))
+            if (randomContent == null || !File.Exists(PATH))
             {
                 UIMethods.DisplayEmptyQnAMessage();
                 UIMethods.DisplayGoodBuyMessage();
                 break;
             }
 
-            UIMethods.OutputQnA(randomeContent);
+            UIMethods.OutputQnA(randomContent);
 
             int userAnswer = UIMethods.ReadCorrectAnswerInput();
 
-            points = points + UIMethods.CompareTheAnswers(randomeContent, userAnswer);
+            points = points + UIMethods.CompareTheAnswers(randomContent, userAnswer);
             UIMethods.DisplayTotalPoints(points);
 
             if (UIMethods.AskToContinueOrQuit(QUIT, PLAY))

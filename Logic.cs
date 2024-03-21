@@ -37,8 +37,8 @@ namespace QuizMaker
             }
 
             int randomIndex = rng.Next(0, QnAList.Count);
-            QuestionsAndAnswers randomeContent = QnAList[randomIndex];
-            return randomeContent;
+            QuestionsAndAnswers randomContent = QnAList[randomIndex];
+            return randomContent;
         }
     }
 }

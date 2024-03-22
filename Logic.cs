@@ -38,5 +38,9 @@ namespace QuizMaker
             QuestionsAndAnswers randomContent = QnAList[randomIndex];
             return randomContent;
         }
+        public static bool CompareAnswers(QuestionsAndAnswers randomContent, int userAnswer)
+        {
+            return randomContent.CorrectAnswer == userAnswer;
+        }
     }
 }

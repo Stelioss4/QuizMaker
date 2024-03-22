@@ -148,16 +148,11 @@
             return QnAList;
         }
 
-        public static int CompareAnswers(QuestionsAndAnswers randomContent, int userAnswer)
+        public static int DisplayAnswerComparison(QuestionsAndAnswers randomContent, int userAnswer)
         {
             int points = 0;
-
-            if (randomContent == null)
-            {
-                DisplayEmptyQnAMessage();
-                return 0;
-            }
-            if (randomContent.CorrectAnswer == userAnswer)
+            Console.Clear();
+            if (Logic.CompareAnswers(randomContent, userAnswer))
             {
                 Console.WriteLine($"Perfect!! The correct answer is number {randomContent.CorrectAnswer}: {randomContent.Answers[randomContent.CorrectAnswer - CONSTANTS.ANSWER_COUNT_HELP_LOW]}!!!\n");
                 points++;

@@ -33,7 +33,6 @@ public class Program
             if (randomContent == null || !File.Exists(CONSTANTS.PATH))
             {
                 UIMethods.DisplayEmptyQnAMessage();
-                UIMethods.DisplayGoodBuyMessage();
                 break;
             }
 
@@ -41,7 +40,7 @@ public class Program
 
             int userAnswer = UIMethods.ReadUsersCorrectAnswer();
 
-            points += UIMethods.CompareAnswers(randomContent, userAnswer);
+            points += UIMethods.DisplayAnswerComparison(randomContent, userAnswer);
             UIMethods.DisplayTotalPoints(points);
 
             if (UIMethods.AskToContinueOrQuit(CONSTANTS.QUIT, CONSTANTS.PLAY))

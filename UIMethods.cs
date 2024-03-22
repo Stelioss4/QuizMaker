@@ -154,15 +154,6 @@
             return QnAList;
         }
 
-        public static void AddQnA(List<QuestionsAndAnswers> QnAList)
-        {
-            if (AskToAddQuestions())
-            {
-                QnAList = AddQnAInAList(QnAList);
-                Logic.SaveToHardDrive(QnAList);
-            }
-        }
-
         public static int CompareTheAnswers(QuestionsAndAnswers randomContent, int userAnswer)
         {
             int points = 0;

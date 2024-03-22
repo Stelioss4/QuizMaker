@@ -10,7 +10,17 @@ public class Program
 
         List<QuestionsAndAnswers> QnAList = Logic.LoadFromHardDrive();
 
-        UIMethods.AddQnA(QnAList);
+        bool AddedQuestions = false;
+
+        if (UIMethods.AskToAddQuestions())
+        {
+            QnAList = UIMethods.AddQnAInAList(QnAList);
+            AddedQuestions = true;
+        }
+        if(AddedQuestions)
+        {
+            Logic.SaveToHardDrive(QnAList);
+        }
 
         UIMethods.DisplayMessageForPlay();
 

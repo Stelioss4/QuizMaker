@@ -2,12 +2,6 @@
 {
     public static class UIMethods
     {
-        const int LOW_ANSWERS_LIMMIT = 0;
-        const int ANSWER_COUNT_HELP_LOW = 1;
-        const int ANSWER_COUNT_HELP_HIGH = 5;
-        const int UPPER_ANSWER_LIMMIT = 4;
-        const string PLAY = "play";
-        const string ASK_QUESTIONS = "ask more questions";
 
         public static void DisplayWelcomeMessage()
         {
@@ -26,7 +20,7 @@
         {
             Console.WriteLine("Please write four additional answers for the question!");
             List<string> answers = new List<string>();
-            for (int i = LOW_ANSWERS_LIMMIT; i < UPPER_ANSWER_LIMMIT; i++)
+            for (int i = CONSTANTS.LOW_ANSWERS_LIMMIT; i < CONSTANTS.UPPER_ANSWER_LIMMIT; i++)
             {
                 Console.Write($"Enter answer {i + 1}: ");
                 string answer = Console.ReadLine();
@@ -41,7 +35,7 @@
             while (true)
             {
                 int CorrectAnswer = 0;
-                if (int.TryParse(Console.ReadLine(), out CorrectAnswer) && CorrectAnswer < ANSWER_COUNT_HELP_HIGH)
+                if (int.TryParse(Console.ReadLine(), out CorrectAnswer) && CorrectAnswer < CONSTANTS.ANSWER_COUNT_HELP_HIGH)
 
                 {
                     Console.Clear();
@@ -76,9 +70,9 @@
             while (true)
             {
                 int userAnswer = 0;
-                if (int.TryParse(Console.ReadLine(), out userAnswer) && userAnswer < ANSWER_COUNT_HELP_HIGH)
+                if (int.TryParse(Console.ReadLine(), out userAnswer) && userAnswer < CONSTANTS.ANSWER_COUNT_HELP_HIGH)
                 {
-                    for (int i = ANSWER_COUNT_HELP_LOW; i < ANSWER_COUNT_HELP_HIGH; i++)
+                    for (int i = CONSTANTS.ANSWER_COUNT_HELP_LOW; i < CONSTANTS.ANSWER_COUNT_HELP_HIGH; i++)
                     {
                         if (userAnswer == i)
                         {
@@ -109,7 +103,7 @@
                 return;
             }
 
-            int numberOfAnswer = ANSWER_COUNT_HELP_LOW;
+            int numberOfAnswer = CONSTANTS.ANSWER_COUNT_HELP_LOW;
             foreach (string answer in randomContent.Answers)
             {
                 Console.WriteLine($"{numberOfAnswer++}: {answer}");
@@ -152,7 +146,7 @@
                 QuestionsAndAnswers questionandAnswers = ReadQnA();
                 QnAList.Add(questionandAnswers);
 
-                if (AskToContinueOrQuit(PLAY, ASK_QUESTIONS))
+                if (AskToContinueOrQuit(CONSTANTS.PLAY, CONSTANTS.ASK_QUESTIONS))
                 {
                     break;
                 }
@@ -180,12 +174,12 @@
             }
             if (randomContent.CorrectAnswer == userAnswer)
             {
-                Console.WriteLine($"Perfect!! The correct answer is number {randomContent.CorrectAnswer}: {randomContent.Answers[randomContent.CorrectAnswer - ANSWER_COUNT_HELP_LOW]}!!!\n");
+                Console.WriteLine($"Perfect!! The correct answer is number {randomContent.CorrectAnswer}: {randomContent.Answers[randomContent.CorrectAnswer - CONSTANTS.ANSWER_COUNT_HELP_LOW]}!!!\n");
                 points++;
             }
             else
             {
-                Console.WriteLine($"Sorry.. The correct answer is number {randomContent.CorrectAnswer}: {randomContent.Answers[randomContent.CorrectAnswer - ANSWER_COUNT_HELP_LOW]}\n");
+                Console.WriteLine($"Sorry.. The correct answer is number {randomContent.CorrectAnswer}: {randomContent.Answers[randomContent.CorrectAnswer - CONSTANTS.ANSWER_COUNT_HELP_LOW]}\n");
             }
             return points;
         }

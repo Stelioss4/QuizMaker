@@ -1,14 +1,12 @@
 ﻿using System.Xml.Serialization;
 namespace QuizMaker
 {
-    public static class Logic
+    public class Logic
     {
-        const string PATH = "QuestionsandAnswers.xml";
-
         public static void SaveToHardDrive(List<QuestionsAndAnswers> QnAList)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
-            using (FileStream file = File.Create(PATH))
+            using (FileStream file = File.Create(CONSTANTS.PATH))
             {
                 serializer.Serialize(file, QnAList);
             }
@@ -19,9 +17,9 @@ namespace QuizMaker
             List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
             XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
 
-            if (File.Exists(PATH))
+            if (File.Exists(CONSTANTS.PATH))
             {
-                using (FileStream file = File.OpenRead(PATH))
+                using (FileStream file = File.OpenRead(CONSTANTS.PATH))
                 {
                     QnAList = serializer.Deserialize(file) as List<QuestionsAndAnswers>;
                 }

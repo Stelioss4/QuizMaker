@@ -3,9 +3,6 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        const string QUIT = "quit";
-        const string PLAY = "play";
-        const string PATH = "QuestionsandAnswers.xml";
 
         Random rng = new Random();
 
@@ -23,7 +20,7 @@ public class Program
         {
             QuestionsAndAnswers randomContent = Logic.MakeRandomQuestion(QnAList, rng);
 
-            if (randomContent == null || !File.Exists(PATH))
+            if (randomContent == null || !File.Exists(CONSTANTS.PATH))
             {
                 UIMethods.DisplayEmptyQnAMessage();
                 UIMethods.DisplayGoodBuyMessage();
@@ -34,10 +31,10 @@ public class Program
 
             int userAnswer = UIMethods.ReadCorrectAnswerInput();
 
-            points = points + UIMethods.CompareTheAnswers(randomContent, userAnswer);
+            points += UIMethods.CompareTheAnswers(randomContent, userAnswer);
             UIMethods.DisplayTotalPoints(points);
 
-            if (UIMethods.AskToContinueOrQuit(QUIT, PLAY))
+            if (UIMethods.AskToContinueOrQuit(CONSTANTS.QUIT, CONSTANTS.PLAY))
             {
                 UIMethods.DisplayGoodBuyMessage();
                 break;

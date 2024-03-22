@@ -20,7 +20,7 @@
         {
             Console.WriteLine("Please write four additional answers for the question!");
             List<string> answers = new List<string>();
-            for (int i = CONSTANTS.LOW_ANSWERS_LIMMIT; i < CONSTANTS.UPPER_ANSWER_LIMMIT; i++)
+            for (int i = CONSTANTS.LOW_ANSWERS_LIMIT; i < CONSTANTS.UPPER_ANSWER_LIMIT; i++)
             {
                 Console.Write($"Enter answer {i + 1}: ");
                 string answer = Console.ReadLine();
@@ -31,7 +31,7 @@
 
         public static int ReadCorrectAnswer()
         {
-            Console.WriteLine($"Please choose one of the answers ({CONSTANTS.ANSWER_COUNT_HELP_LOW} to {CONSTANTS.UPPER_ANSWER_LIMMIT}):");
+            Console.WriteLine($"Please choose one of the answers ({CONSTANTS.ANSWER_COUNT_HELP_LOW} to {CONSTANTS.UPPER_ANSWER_LIMIT}):");
             while (true)
             {
                 int CorrectAnswer = 0;
@@ -66,7 +66,7 @@
 
         public static int ReadUsersCorrectAnswer()
         {
-            Console.WriteLine($"Please choose one of the answers ({CONSTANTS.ANSWER_COUNT_HELP_LOW} to {CONSTANTS.UPPER_ANSWER_LIMMIT}):");
+            Console.WriteLine($"Please choose one of the answers ({CONSTANTS.ANSWER_COUNT_HELP_LOW} to {CONSTANTS.UPPER_ANSWER_LIMIT}):");
             while (true)
             {
                 int userAnswer = 0;
@@ -77,7 +77,7 @@
                 }
                 else
                 {
-                    Console.WriteLine($"Invalid input. Please enter a number between {CONSTANTS.ANSWER_COUNT_HELP_LOW} and {CONSTANTS.UPPER_ANSWER_LIMMIT}.");
+                    Console.WriteLine($"Invalid input. Please enter a number between {CONSTANTS.ANSWER_COUNT_HELP_LOW} and {CONSTANTS.UPPER_ANSWER_LIMIT}.");
                 }
             }
         }

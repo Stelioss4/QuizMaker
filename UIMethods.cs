@@ -35,8 +35,8 @@
             while (true)
             {
                 int CorrectAnswer = 0;
-                if (int.TryParse(Console.ReadLine(), out CorrectAnswer) && CorrectAnswer < CONSTANTS.ANSWER_COUNT_HELP_HIGH)
 
+                if (int.TryParse(Console.ReadLine(), out CorrectAnswer) && CorrectAnswer < CONSTANTS.ANSWER_COUNT_HELP_HIGH)
                 {
                     Console.Clear();
                     return CorrectAnswer;
@@ -70,16 +70,10 @@
             while (true)
             {
                 int userAnswer = 0;
+
                 if (int.TryParse(Console.ReadLine(), out userAnswer) && userAnswer < CONSTANTS.ANSWER_COUNT_HELP_HIGH)
                 {
-                    for (int i = CONSTANTS.ANSWER_COUNT_HELP_LOW; i < CONSTANTS.ANSWER_COUNT_HELP_HIGH; i++)
-                    {
-                        if (userAnswer == i)
-                        {
-                            Console.Clear();
-                            return userAnswer;
-                        }
-                    }
+                    return userAnswer;
                 }
                 else
                 {

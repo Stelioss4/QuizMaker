@@ -31,7 +31,7 @@
 
         public static int ReadCorrectAnswer()
         {
-            Console.WriteLine("choose 1, 2, 3, 4 for the correct answer");
+            Console.WriteLine($"Please choose one of the answers ({CONSTANTS.ANSWER_COUNT_HELP_LOW} to {CONSTANTS.UPPER_ANSWER_LIMMIT}):");
             while (true)
             {
                 int CorrectAnswer = 0;
@@ -66,7 +66,7 @@
 
         public static int ReadUsersCorrectAnswer()
         {
-            Console.WriteLine("Please choose one of the answers (1, 2, 3, or 4):");
+            Console.WriteLine($"Please choose one of the answers ({CONSTANTS.ANSWER_COUNT_HELP_LOW} to {CONSTANTS.UPPER_ANSWER_LIMMIT}):");
             while (true)
             {
                 int userAnswer = 0;
@@ -77,7 +77,7 @@
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input. Please enter a number between 1 and 4.");
+                    Console.WriteLine($"Invalid input. Please enter a number between {CONSTANTS.ANSWER_COUNT_HELP_LOW} and {CONSTANTS.UPPER_ANSWER_LIMMIT}.");
                 }
             }
         }
@@ -106,7 +106,7 @@
 
         public static bool AskToContinueOrQuit(string play, string quit)
         {
-            Console.WriteLine($"Press (SPACE) to {play} or anything else to {quit}. . .");
+            Console.WriteLine($"Press (SPACE) to play or anything else to quit. . .");
             Console.WriteLine("********************************************************\n");
             ConsoleKeyInfo keyInfo = Console.ReadKey();
             return keyInfo.Key == ConsoleKey.Spacebar;
@@ -140,7 +140,7 @@
                 QuestionsAndAnswers questionandAnswers = ReadQnA();
                 QnAList.Add(questionandAnswers);
 
-                if (AskToContinueOrQuit(CONSTANTS.PLAY, CONSTANTS.ASK_QUESTIONS))
+                if (AskToContinueOrQuit("play", "ask more questions"))
                 {
                     break;
                 }

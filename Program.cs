@@ -43,7 +43,7 @@ public class Program
             points += UIMethods.DisplayAnswerComparison(randomContent, userAnswer);
             UIMethods.DisplayTotalPoints(points);
 
-            if (UIMethods.AskToContinueOrQuit(CONSTANTS.QUIT, CONSTANTS.PLAY))
+            if (UIMethods.AskToContinueOrQuit("quit", "play"))
             {
                 break;
             }

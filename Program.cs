@@ -36,10 +36,11 @@ public class Program
 
             if (UIMethods.AskToContinueOrQuit(CONSTANTS.QUIT, CONSTANTS.PLAY))
             {
-                UIMethods.DisplayGoodBuyMessage();
                 break;
             }
         }
         while (QnAList != null);
+
+        UIMethods.DisplayGoodBuyMessage();
     }
 }

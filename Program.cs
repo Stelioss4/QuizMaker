@@ -14,7 +14,7 @@ public class Program
 
         if (UIMethods.AskToAddQuestions())
         {
-            QnAList = UIMethods.AddQnAInAList(QnAList);
+            QnAList = UIMethods.AppendQnA(QnAList);
             AddedQuestions = true;
         }
         if(AddedQuestions)
@@ -22,7 +22,7 @@ public class Program
             Logic.SaveToHardDrive(QnAList);
         }
 
-        UIMethods.DisplayMessageForPlay();
+        UIMethods.DisplayPlayMessage();
 
         int points = 0;
 
@@ -39,9 +39,9 @@ public class Program
 
             UIMethods.OutputQnA(randomContent);
 
-            int userAnswer = UIMethods.ReadCorrectAnswerInput();
+            int userAnswer = UIMethods.ReadUsersCorrectAnswer();
 
-            points += UIMethods.CompareTheAnswers(randomContent, userAnswer);
+            points += UIMethods.CompareAnswers(randomContent, userAnswer);
             UIMethods.DisplayTotalPoints(points);
 
             if (UIMethods.AskToContinueOrQuit(CONSTANTS.QUIT, CONSTANTS.PLAY))

@@ -8,7 +8,7 @@
             Console.WriteLine("HELLO! WELCOME ON QUIZ MAKER");
         }
 
-        public static string ReadTheQuestions()
+        public static string ReadQuestions()
         {
             Console.Clear();
             Console.WriteLine("Please write a question: ");
@@ -16,7 +16,7 @@
             return Console.ReadLine();
         }
 
-        public static List<string> ReadTheAnswers()
+        public static List<string> ReadAnswers()
         {
             Console.WriteLine("Please write four additional answers for the question!");
             List<string> answers = new List<string>();
@@ -29,7 +29,7 @@
             return answers;
         }
 
-        public static int ReadTheCorrectAnswer()
+        public static int ReadCorrectAnswer()
         {
             Console.WriteLine("choose 1, 2, 3, 4 for the correct answer");
             while (true)
@@ -56,7 +56,7 @@
             return keyInfo.Key == ConsoleKey.Enter;
         }
 
-        public static void DisplayMessageForPlay()
+        public static void DisplayPlayMessage()
         {
             Console.Clear();
             Console.WriteLine("**********************");
@@ -64,7 +64,7 @@
             Console.WriteLine("**********************\n");
         }
 
-        public static int ReadCorrectAnswerInput()
+        public static int ReadUsersCorrectAnswer()
         {
             Console.WriteLine("Please choose one of the answers (1, 2, 3, or 4):");
             while (true)
@@ -122,9 +122,9 @@
         {
             QuestionsAndAnswers questionandAnswers = new QuestionsAndAnswers();
 
-            questionandAnswers.Questions = ReadTheQuestions();
-            questionandAnswers.Answers = ReadTheAnswers();
-            questionandAnswers.CorrectAnswer = ReadTheCorrectAnswer();
+            questionandAnswers.Questions = ReadQuestions();
+            questionandAnswers.Answers = ReadAnswers();
+            questionandAnswers.CorrectAnswer = ReadCorrectAnswer();
             return questionandAnswers;
         }
 
@@ -138,7 +138,7 @@
             Console.WriteLine("Goodbuy then!! See you next time!!");
         }
 
-        public static List<QuestionsAndAnswers> AddQnAInAList(List<QuestionsAndAnswers> QnAList)
+        public static List<QuestionsAndAnswers> AppendQnA(List<QuestionsAndAnswers> QnAList)
         {
 
             while (true)
@@ -154,7 +154,7 @@
             return QnAList;
         }
 
-        public static int CompareTheAnswers(QuestionsAndAnswers randomContent, int userAnswer)
+        public static int CompareAnswers(QuestionsAndAnswers randomContent, int userAnswer)
         {
             int points = 0;
 

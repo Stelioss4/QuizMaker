@@ -28,7 +28,7 @@ public class Program
 
         do
         {
-            QuestionAndAnswers randomContent = Logic.MakeRandomQuestion(QnAList, rng);
+            QuestionAndAnswers randomContent = Logic.GetRandomQnAFromList(QnAList, rng);
 
             if (randomContent == null || !File.Exists(CONSTANTS.PATH))
             {

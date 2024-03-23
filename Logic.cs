@@ -27,7 +27,7 @@ namespace QuizMaker
             return QnAList;
         }
 
-        public static QuestionAndAnswers MakeRandomQuestion(List<QuestionAndAnswers> QnAList, Random rng)
+        public static QuestionAndAnswers GetRandomQnAFromList(List<QuestionAndAnswers> QnAList, Random rng)
         {
             if (QnAList.Count == 0)
             {

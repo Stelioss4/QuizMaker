@@ -2,7 +2,6 @@
 {
     public static class UIMethods
     {
-
         public static void DisplayWelcomeMessage()
         {
             Console.WriteLine("HELLO! WELCOME ON QUIZ MAKER");

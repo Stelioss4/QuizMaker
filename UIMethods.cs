@@ -41,10 +41,9 @@
                     Console.Clear();
                     return CorrectAnswer;
                 }
-                else
-                {
+               
                     Console.WriteLine("Invalid input. Please enter a number between 1 and 4.");
-                }
+               
             }
         }
 
@@ -75,10 +74,9 @@
                 {
                     return userAnswer;
                 }
-                else
-                {
-                    Console.WriteLine($"Invalid input. Please enter a number between {CONSTANTS.ANSWER_COUNT_HELP_LOW} and {CONSTANTS.UPPER_ANSWER_LIMIT}.");
-                }
+
+                Console.WriteLine($"Invalid input. Please enter a number between {CONSTANTS.ANSWER_COUNT_HELP_LOW} and {CONSTANTS.UPPER_ANSWER_LIMIT}.");
+
             }
         }
 

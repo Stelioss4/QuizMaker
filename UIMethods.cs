@@ -104,7 +104,7 @@
             }
         }
 
-        public static bool AskToContinueOrQuit(string play, string quit)
+        public static bool AskToContinueOrQuit()
         {
             Console.WriteLine($"Press (SPACE) to play or anything else to quit. . .");
             Console.WriteLine("********************************************************\n");
@@ -140,7 +140,7 @@
                 QuestionAndAnswers questionandAnswers = ReadQnA();
                 QnAList.Add(questionandAnswers);
 
-                if (AskToContinueOrQuit("play", "ask more questions"))
+                if (AskToContinueOrQuit())
                 {
                     break;
                 }

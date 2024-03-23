@@ -164,7 +164,7 @@
         public static void DisplayEmptyQnAMessage()
         {
             Console.Clear();
-            Console.WriteLine("Sorry, no question available. Please restart the program and follow the instructions to add some QnA content.");
+            Console.WriteLine("Sorry, no question or answers available. Please restart the program and follow the instructions to add some QnA content.");
         }
     }
 }

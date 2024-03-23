@@ -30,7 +30,7 @@ public class Program
         {
             QuestionAndAnswers randomContent = Logic.GetRandomQnAFromList(QnAList, rng);
 
-            if (randomContent == null || !File.Exists(CONSTANTS.PATH))
+            if (randomContent.Question == null || randomContent.Answers.Count == 0 || !File.Exists(CONSTANTS.PATH))
             {
                 UIMethods.DisplayEmptyQnAMessage();
                 break;

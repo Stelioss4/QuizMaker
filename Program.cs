@@ -8,7 +8,7 @@ public class Program
 
         UIMethods.DisplayWelcomeMessage();
 
-        List<QuestionsAndAnswers> QnAList = Logic.LoadFromHardDrive();
+        List<QuestionAndAnswers> QnAList = Logic.LoadFromHardDrive();
 
         bool AddedQuestions = false;
 
@@ -28,7 +28,7 @@ public class Program
 
         do
         {
-            QuestionsAndAnswers randomContent = Logic.MakeRandomQuestion(QnAList, rng);
+            QuestionAndAnswers randomContent = Logic.MakeRandomQuestion(QnAList, rng);
 
             if (randomContent == null || !File.Exists(CONSTANTS.PATH))
             {

@@ -82,14 +82,14 @@
             }
         }
 
-        public static void OutputQnA(QuestionsAndAnswers randomContent)
+        public static void OutputQnA(QuestionAndAnswers randomContent)
         {
             if (randomContent == null)
             {
                 return;
             }
 
-            Console.WriteLine(randomContent.Questions);
+            Console.WriteLine(randomContent.Question);
 
             if (randomContent.Answers == null || randomContent.Answers.Count == 0)
             {
@@ -112,11 +112,11 @@
             return keyInfo.Key == ConsoleKey.Spacebar;
         }
 
-        public static QuestionsAndAnswers ReadQnA()
+        public static QuestionAndAnswers ReadQnA()
         {
-            QuestionsAndAnswers questionandAnswers = new QuestionsAndAnswers();
+            QuestionAndAnswers questionandAnswers = new QuestionAndAnswers();
 
-            questionandAnswers.Questions = ReadQuestions();
+            questionandAnswers.Question = ReadQuestions();
             questionandAnswers.Answers = ReadAnswers();
             questionandAnswers.CorrectAnswer = ReadCorrectAnswer();
             return questionandAnswers;
@@ -132,12 +132,12 @@
             Console.WriteLine("Goodbuy then!! See you next time!!");
         }
 
-        public static List<QuestionsAndAnswers> AppendQnA(List<QuestionsAndAnswers> QnAList)
+        public static List<QuestionAndAnswers> AppendQnA(List<QuestionAndAnswers> QnAList)
         {
 
             while (true)
             {
-                QuestionsAndAnswers questionandAnswers = ReadQnA();
+                QuestionAndAnswers questionandAnswers = ReadQnA();
                 QnAList.Add(questionandAnswers);
 
                 if (AskToContinueOrQuit("play", "ask more questions"))
@@ -148,7 +148,7 @@
             return QnAList;
         }
 
-        public static int DisplayAnswerComparison(QuestionsAndAnswers randomContent, int userAnswer)
+        public static int DisplayAnswerComparison(QuestionAndAnswers randomContent, int userAnswer)
         {
             int points = 0;
             Console.Clear();

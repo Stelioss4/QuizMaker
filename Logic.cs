@@ -3,31 +3,31 @@ namespace QuizMaker
 {
     public class Logic
     {
-        public static void SaveToHardDrive(List<QuestionsAndAnswers> QnAList)
+        public static void SaveToHardDrive(List<QuestionAndAnswers> QnAList)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionAndAnswers>));
             using (FileStream file = File.Create(CONSTANTS.PATH))
             {
                 serializer.Serialize(file, QnAList);
             }
         }
 
-        public static List<QuestionsAndAnswers> LoadFromHardDrive()
+        public static List<QuestionAndAnswers> LoadFromHardDrive()
         {
-            List<QuestionsAndAnswers> QnAList = new List<QuestionsAndAnswers>();
-            XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionsAndAnswers>));
+            List<QuestionAndAnswers> QnAList = new List<QuestionAndAnswers>();
+            XmlSerializer serializer = new XmlSerializer(typeof(List<QuestionAndAnswers>));
 
             if (File.Exists(CONSTANTS.PATH))
             {
                 using (FileStream file = File.OpenRead(CONSTANTS.PATH))
                 {
-                    QnAList = serializer.Deserialize(file) as List<QuestionsAndAnswers>;
+                    QnAList = serializer.Deserialize(file) as List<QuestionAndAnswers>;
                 }
             }
             return QnAList;
         }
 
-        public static QuestionsAndAnswers MakeRandomQuestion(List<QuestionsAndAnswers> QnAList, Random rng)
+        public static QuestionAndAnswers MakeRandomQuestion(List<QuestionAndAnswers> QnAList, Random rng)
         {
             if (QnAList.Count == 0)
             {
@@ -35,10 +35,10 @@ namespace QuizMaker
             }
 
             int randomIndex = rng.Next(0, QnAList.Count);
-            QuestionsAndAnswers randomContent = QnAList[randomIndex];
+            QuestionAndAnswers randomContent = QnAList[randomIndex];
             return randomContent;
         }
-        public static bool CompareAnswers(QuestionsAndAnswers randomContent, int userAnswer)
+        public static bool CompareAnswers(QuestionAndAnswers randomContent, int userAnswer)
         {
             return randomContent.CorrectAnswer == userAnswer;
         }

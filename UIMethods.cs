@@ -90,7 +90,6 @@
 
             if (randomContent.Answers == null || randomContent.Answers.Count == 0)
             {
-                Console.WriteLine("Sorry, no answers available.");
                 return;
             }
 
